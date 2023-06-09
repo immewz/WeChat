@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.chats.ChatDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_card_medium_2">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnChatDetailBack"
+                android:layout_width="@dimen/margin_30dp"
+                android:layout_height="@dimen/margin_30dp"
+                android:src="@drawable/baseline_arrow_back_blue_24dp"
+                android:layout_centerVertical="true"/>
+
+            <FrameLayout
+                android:layout_toEndOf="@id/btnChatDetailBack"
+                android:id="@+id/flChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_card_medium_2">
+
+                <com.mewz.wechat.views.components.RoundedProfileImage
+                    android:id="@+id/ivChatDetailProfileImage"
+                    android:layout_width="@dimen/margin_40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="centerCrop"
+                    app:cornerRadius="@dimen/margin_medium_3"
+                    app:srcCompat="@drawable/mew" />
+
+                <com.mewz.wechat.views.components.RoundedProfileImage
+                    android:id="@+id/ivChatDetailActive"
+                    android:layout_width="@dimen/margin_card_medium_2"
+                    android:layout_height="@dimen/margin_card_medium_2"
+                    android:scaleType="centerCrop"
+                    app:cornerRadius="@dimen/margin_card_medium"
+                    android:src="@color/colorAccent"
+                    android:layout_gravity="end|bottom" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_toEndOf="@id/flChat"
+                android:id="@+id/tvChatDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_medium"
+                android:text="@string/lbl_chat_name"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_marginStart="@dimen/margin_medium_2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_toEndOf="@id/flChat"
+                android:layout_below="@id/tvChatDetailName"
+                android:id="@+id/tvOnline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_chat_online"
+                android:textSize="@dimen/text_regular"
+                android:textColor="@color/colorHintText"
+                android:layout_marginStart="@dimen/margin_medium_2" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnChatDetailOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dot_horzi"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_card_medium_2"
+            android:layout_marginHorizontal="@dimen/margin_card_medium_2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMessageDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_chat_day"
+                android:layout_centerHorizontal="true"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tvMessageDate"
+                android:id="@+id/rvRecipientMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="true"
+                android:layout_marginTop="@dimen/margin_medium_3"/>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

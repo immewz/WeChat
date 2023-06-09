@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.login.OTPActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_large">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnOTPBack"
+            android:layout_width="@dimen/margin_xlarge"
+            android:layout_height="@dimen/margin_xlarge"
+            android:src="@drawable/baseline_arrow_back_blue_24dp"
+            android:layout_marginTop="@dimen/margin_medium_2"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_below="@id/btnOTPBack"
+            android:id="@+id/tvHi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_otp_hi"
+            android:textSize="@dimen/text_heading_2x"
+            android:textColor="@color/colorPrimary"
+            android:textAppearance="@style/yorkie"
+            android:layout_marginTop="@dimen/margin_xxlarge"
+            android:layout_marginHorizontal="@dimen/margin_large"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_below="@id/tvHi"
+            android:id="@+id/tvCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_otp_create"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorSecondaryText"
+            android:textAppearance="@style/notosans"
+            android:layout_marginTop="@dimen/margin_card_medium"
+            android:layout_marginHorizontal="@dimen/margin_large" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_below="@id/tvCreate"
+            android:id="@+id/ivLogo"
+            android:layout_width="@dimen/width_otp_logo"
+            android:layout_height="@dimen/height_otp_logo"
+            android:src="@drawable/body_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_below="@id/ivLogo"
+            android:id="@+id/etPhone"
+            android:layout_width="@dimen/width_otp_phone_et"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_otp_enter_phone"
+            android:textColorHint="@color/colorHintText"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="@style/notosans"
+            android:inputType="phone"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginLeft="@dimen/margin_large"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_below="@id/ivLogo"
+            android:id="@+id/btnGetOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/button_get_otp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/margin_large"/>
+
+        <in.aabhasjindal.otptextview.OtpTextView
+            android:layout_below="@id/etPhone"
+            android:id="@+id/otpView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:width="@dimen/margin_xxlarge"
+            app:height="@dimen/margin_xxlarge"
+            app:box_margin="@dimen/margin_medium"
+            app:length="4"
+            app:otp="1234"
+            android:textColor="@color/colorPrimaryText"
+            app:otp_text_size="@dimen/text_regular_3x"
+            app:otp_box_background="@drawable/background_otp_view"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:id="@+id/llResendCode"
+            android:layout_below="@id/otpView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_otp_receive_code"
+                android:textAppearance="@style/notosans"
+                android:textColor="@color/colorHintText"
+                android:textSize="@dimen/text_regular_2x"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvResendCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_otp_resend_code"
+                android:textAppearance="@style/notosans"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_below="@id/llResendCode"
+            android:id="@+id/btnVerify"
+            android:layout_width="@dimen/width_login_btn"
+            android:layout_height="@dimen/height_login_btn"
+            android:src="@drawable/button_verify"
+            android:layout_marginTop="@dimen/margin_xxlarge"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+</ScrollView>

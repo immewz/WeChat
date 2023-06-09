@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.contacts.AddNewContactActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnAddContactBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_blue_24dp"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_below="@+id/btnAddContactBack"
+        android:id="@+id/cvTapScan"
+        android:layout_width="@dimen/margin_280dp"
+        android:layout_height="@dimen/margin_90dp"
+        android:background="@color/colorScanMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_large">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="@string/lbl_add_contact_tap"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_regular_3x"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryText"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_add_contact_scan"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/margin_card_medium_2"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/cvTapScan"
+        android:id="@+id/btnScan"
+        android:layout_width="@dimen/margin_280dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/button_scan"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/btnScan"
+        android:id="@+id/btnScanImage"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_xxxlarge"
+        android:src="@drawable/button_scan_image"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"/>
+
+</RelativeLayout>

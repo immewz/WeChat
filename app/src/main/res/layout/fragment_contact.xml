@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ContactFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_medium_3">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/yorkie_semibold"
+                android:text="@string/lbl_contact_title"
+                android:textSize="@dimen/text_heading_2x"
+                android:textColor="@color/colorPrimary"
+                android:layout_centerVertical="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnAddFriend"
+                android:layout_width="@dimen/margin_36dp"
+                android:layout_height="@dimen/margin_36dp"
+                android:src="@drawable/button_add_friend"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/etSearchContacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBar"
+        android:background="@drawable/background_search_box"
+        android:visibility="visible"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="Search"
+        app:searchIcon="@drawable/baseline_search_dark_blue_24dp"
+        app:closeIcon="@drawable/baseline_close_dark_blue_24dp"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/etSearchContacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_marginTop="@dimen/margin_medium">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:visibility="visible">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_medium"
+                android:text="@string/lbl_contact_group"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_below="@+id/tvGroup"
+                android:id="@+id/btnAddGroup"
+                android:layout_width="@dimen/margin_90dp"
+                android:layout_height="@dimen/margin_100dp"
+                android:src="@drawable/button_add_group"
+                android:layout_marginTop="@dimen/margin_card_medium_2"
+                android:layout_marginEnd="@dimen/margin_card_medium"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tvGroup"
+                android:layout_toEndOf="@id/btnAddGroup"
+                android:id="@+id/rvGroupList"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_100dp"
+                android:layout_marginTop="@dimen/margin_card_medium_2"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/rvGroupList"
+                android:id="@+id/rvContactGroupList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layout_marginTop="@dimen/margin_card_medium_2"
+                android:layout_marginBottom="@dimen/margin_medium_2"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/rvGroupList"
+                android:id="@+id/rvAlphabetList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layout_marginTop="@dimen/margin_medium_3"
+                android:layout_alignParentEnd="true"
+                android:background="@color/box"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_below="@id/etSearchContacts"
+        android:id="@+id/flEmptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_120dp"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEmptyImage"
+            android:layout_width="@dimen/margin_223dp"
+            android:layout_height="@dimen/margin_166dp"
+            android:src="@drawable/empty_view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_below="@id/ivEmptyImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_contact_empty"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSearchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_contact_empty_name"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginStart="@dimen/margin_xxlarge"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_toEndOf="@id/tvSearchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_contact_exits"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_medium"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

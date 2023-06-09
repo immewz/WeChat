@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Generic with ratio -->
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_card_medium">6dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_medium_2">16dp</dimen>
+    <dimen name="margin_card_medium_2">12dp</dimen>
+    <dimen name="margin_medium_3">20dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">48dp</dimen>
+    <dimen name="margin_xxxlarge">80dp</dimen>
+
+    <dimen name="margin_small_n">-4dp</dimen>
+    <dimen name="margin_card_medium_n">-6dp</dimen>
+    <dimen name="margin_medium_n">-8dp</dimen>
+    <dimen name="margin_card_medium_2_n">-12dp</dimen>
+    <dimen name="margin_medium_2_n">-16dp</dimen>
+    <dimen name="margin_medium_3_n">-18dp</dimen>
+    <dimen name="margin_large_n">-24dp</dimen>
+    <dimen name="margin_xlarge_n">-32dp</dimen>
+
+    <dimen name="text_smaller">10sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_regular">14sp</dimen>
+    <dimen name="text_regular_2x">16sp</dimen>
+    <dimen name="text_regular_3x">20sp</dimen>
+    <dimen name="text_heading_1x">24sp</dimen>
+    <dimen name="text_heading_2x">32sp</dimen>
+    <dimen name="text_big">40sp</dimen>
+    <dimen name="text_big_2x">60sp</dimen>
+    <dimen name="text_big_3x">80sp</dimen>
+
+    <dimen name="text_13dp">13sp</dimen>
+
+    <dimen name="margin_150dp">150dp</dimen>
+    <dimen name="margin_120dp">120dp</dimen>
+    <dimen name="margin_220dp">220dp</dimen>
+    <dimen name="margin_1dp">1dp</dimen>
+    <dimen name="margin_36dp">36dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_100dp">100dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="margin_18sp">18sp</dimen>
+
+    <!-- splash -->
+    <dimen name="width_splash_logo">160dp</dimen>
+    <dimen name="height_splash_logo">150dp</dimen>
+    <dimen name="splash_between_top_and_logo">180dp</dimen>
+    <dimen name="splash_between_logo_and_text">140dp</dimen>
+    <dimen name="weight_splash_button">150dp</dimen>
+    <dimen name="height_splash_button">50dp</dimen>
+
+    <!-- login -->
+    <dimen name="width_login_logo">270dp</dimen>
+    <dimen name="height_login_logo">200dp</dimen>
+    <dimen name="width_login_btn">130dp</dimen>
+    <dimen name="height_login_btn">50dp</dimen>
+
+    <!-- otp -->
+    <dimen name="width_otp_logo">307dp</dimen>
+    <dimen name="height_otp_logo">266dp</dimen>
+    <dimen name="width_otp_phone_et">230dp</dimen>
+
+
+    <!-- register -->
+    <dimen name="width_register_profile">120dp</dimen>
+    <dimen name="height_register_profile">120dp</dimen>
+    <dimen name="margin_90dp">90dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_280dp">280dp</dimen>
+    <dimen name="margin_223dp">223dp</dimen>
+    <dimen name="margin_166dp">166dp</dimen>
+    <dimen name="margin_70dp">70dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+
+
+</resources>

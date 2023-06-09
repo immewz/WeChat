@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/box"
+    android:layout_marginHorizontal="@dimen/margin_small"
+    android:layout_marginVertical="@dimen/margin_small">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/margin_card_medium">
+
+        <FrameLayout
+            android:id="@+id/flChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_medium">
+
+            <com.mewz.wechat.views.components.RoundedProfileImage
+                android:id="@+id/ivChatProfileImage"
+                android:layout_width="@dimen/margin_60dp"
+                android:layout_height="@dimen/margin_60dp"
+                android:scaleType="centerCrop"
+                app:cornerRadius="@dimen/margin_30dp"
+                app:srcCompat="@drawable/mew" />
+
+            <com.mewz.wechat.views.components.RoundedProfileImage
+                android:id="@+id/ivChatActive"
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_medium_2"
+                android:scaleType="centerCrop"
+                app:cornerRadius="@dimen/margin_medium"
+                android:src="@color/colorAccent"
+                android:layout_gravity="end|bottom" />
+            
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_toEndOf="@id/flChat"
+            android:id="@+id/tvChatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="Mewz"
+            android:textSize="@dimen/text_regular_2x"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginStart="@dimen/margin_medium_3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_toEndOf="@id/flChat"
+            android:layout_below="@id/tvChatName"
+            android:id="@+id/tvLastSentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="You sent a video"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorHintText"
+            android:layout_marginStart="@dimen/margin_medium_3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLastMessageTime"
+            android:text="5min"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/margin_card_medium_2"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_below="@id/tvLastMessageTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivSentSign"
+            android:src="@drawable/sent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_card_medium_2"/>
+        
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

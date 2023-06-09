@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/margin_card_medium_2">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvProfileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/mew"
+            android:scaleType="centerCrop"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_toEndOf="@id/cvProfileImage"
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_medium"
+        android:text="Mewz"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/text_regular"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/margin_card_medium"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_toEndOf="@id/cvProfileImage"
+        android:layout_below="@id/tvProfileName"
+        android:id="@+id/tvLastOnline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15 min ago"
+        android:textSize="@dimen/text_small"
+        android:layout_marginLeft="@dimen/margin_card_medium"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnMomentOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dot"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_small"/>
+
+    <LinearLayout
+        android:id="@+id/llMomentCaptionAndImage"
+        android:layout_below="@id/cvProfileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_medium"
+            android:text="A machine resembling a human being and able to replicate certain human movements and functions automatically."
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvMomentImage"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            app:cardCornerRadius="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/post"
+                android:scaleType="centerCrop"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/llMomentCaptionAndImage"
+        android:id="@+id/ivLoveReact"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_medium_3"
+        android:src="@drawable/heart"
+        android:layout_marginTop="@dimen/margin_medium_3"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_toEndOf="@id/ivLoveReact"
+        android:id="@+id/tvReactCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/llMomentCaptionAndImage"
+        android:id="@+id/ivBookMark"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:src="@drawable/bookmark"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentEnd="true"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_toStartOf="@id/tvCommentCount"
+        android:id="@+id/ivComment"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:src="@drawable/comment"
+        android:layout_marginTop="@dimen/margin_card_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_toStartOf="@id/ivBookMark"
+        android:id="@+id/tvCommentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginRight="@dimen/margin_card_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <View
+        android:layout_below="@id/ivLoveReact"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/colorHintText"
+        android:layout_marginTop="@dimen/margin_medium_2" />
+
+</RelativeLayout>

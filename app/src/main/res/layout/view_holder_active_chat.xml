@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/margin_70dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/flActiveChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <com.mewz.wechat.views.components.RoundedProfileImage
+            android:id="@+id/ivActiveProfileImage"
+            android:layout_width="@dimen/margin_60dp"
+            android:layout_height="@dimen/margin_60dp"
+            android:scaleType="centerCrop"
+            app:cornerRadius="@dimen/margin_30dp"
+            app:srcCompat="@drawable/mew"/>
+
+        <com.mewz.wechat.views.components.RoundedProfileImage
+            android:id="@+id/ivChatActive"
+            android:layout_width="@dimen/margin_medium_2"
+            android:layout_height="@dimen/margin_medium_2"
+            android:scaleType="centerCrop"
+            app:cornerRadius="@dimen/margin_medium"
+            android:src="@color/colorAccent"
+            android:layout_gravity="end|bottom" />
+
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/flActiveChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mewz"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/text_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

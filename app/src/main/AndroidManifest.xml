@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WeChat"
+        tools:targetApi="31">
+
+        <!-- Login -->
+        <activity
+            android:name=".activities.login.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.login.OTPActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.login.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true">
+
+        </activity>
+
+        <!-- New Moment -->
+        <activity
+            android:name=".activities.moments.NewMomentActivity"
+            android:exported="false" />
+
+        <!-- Contact -->
+        <activity
+            android:name=".activities.contacts.AddNewContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.contacts.AddNewGroupActivity"
+            android:exported="false" />
+
+        <!-- Chat -->
+        <activity
+            android:name=".activities.chats.ChatDetailActivity"
+            android:exported="true">
+
+        </activity>
+    </application>
+
+</manifest>

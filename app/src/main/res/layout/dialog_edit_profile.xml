@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/margin_xlarge">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_register_name"
+        android:textSize="@dimen/text_regular"
+        android:textColor="@color/colorHintText"
+        android:textAppearance="@style/notosans"
+        android:layout_marginHorizontal="@dimen/margin_large"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_below="@id/tvName"
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorHintText"
+        android:textSize="@dimen/text_regular_2x"
+        android:textColor="@color/colorPrimaryText"
+        android:textAppearance="@style/yorkie"
+        android:inputType="text"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/etName"
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        android:textSize="@dimen/text_regular"
+        android:textColor="@color/colorHintText"
+        android:textAppearance="@style/notosans"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_large"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_below="@id/tvPhone"
+        android:id="@+id/etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorHintText"
+        android:textSize="@dimen/text_regular_2x"
+        android:textColor="@color/colorPrimaryText"
+        android:textAppearance="@style/yorkie"
+        android:inputType="text"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/etPhone"
+        android:id="@+id/tvDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_register_dob"
+        android:textSize="@dimen/text_regular"
+        android:textColor="@color/colorHintText"
+        android:textAppearance="@style/notosans"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_large"/>
+
+    <LinearLayout
+        android:layout_below="@id/tvDateOfBirth"
+        android:id="@+id/llSpinnersDateOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerDay"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_36dp"
+            android:elevation="@dimen/margin_medium"
+            android:spinnerMode="dropdown"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_36dp"
+            android:elevation="@dimen/margin_medium"
+            android:spinnerMode="dropdown"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerYear"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_36dp"
+            android:elevation="@dimen/margin_medium"
+            android:spinnerMode="dropdown"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/llSpinnersDateOfBirth"
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_register_gender"
+        android:textSize="@dimen/text_regular"
+        android:textColor="@color/colorHintText"
+        android:textAppearance="@style/notosans"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_large"/>
+
+    <RadioGroup
+        android:layout_below="@id/tvGender"
+        android:id="@+id/rgGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_medium_3">
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_medium_3"
+            android:text="@string/lbl_register_rb_male"
+            android:fontFamily="@font/yorkie_bold"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/text_regular"
+            android:textStyle="bold"
+            android:checked="true"
+            android:buttonTint="@color/colorPrimary"/>
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_medium_3"
+            android:checked="false"
+            android:text="@string/lbl_register_rb_female"
+            android:fontFamily="@font/yorkie_bold"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/text_regular"
+            android:buttonTint="@color/colorPrimary"/>
+
+        <RadioButton
+            android:id="@+id/rbOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/lbl_register_rb_other"
+            android:fontFamily="@font/yorkie_bold"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/text_regular"
+            android:buttonTint="@color/colorPrimary"/>
+
+    </RadioGroup>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/rgGender"
+        android:id="@+id/btnCancel"
+        android:layout_width="@dimen/weight_splash_button"
+        android:layout_height="@dimen/height_splash_button"
+        android:src="@drawable/button_cancel"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_xlarge"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_below="@id/rgGender"
+        android:id="@+id/btnSave"
+        android:layout_width="@dimen/weight_splash_button"
+        android:layout_height="@dimen/height_splash_button"
+        android:src="@drawable/button_save"
+        android:layout_toEndOf="@id/btnCancel"
+        android:layout_marginLeft="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_xlarge"/>
+
+</RelativeLayout>

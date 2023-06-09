@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">WeChat</string>
+
+    <!-- splash -->
+    <string name="lbl_splash_first">Text your friends and share moments</string>
+    <string name="lbl_splash_second">End-to-end secured messaging app with Social Elements</string>
+
+    <!-- login -->
+    <string name="lbl_login_welcome">Welcome !</string>
+    <string name="lbl_login_continue">Login to continue</string>
+    <string name="lbl_login_enter_phone">Enter Your Phone Number</string>
+    <string name="lbl_login_enter_gmail">Enter Your Gmail</string>
+    <string name="lbl_login_enter_password">Enter Your Password</string>
+    <string name="hint_login_phone">09</string>
+    <string name="hint_login_gmail">example@gmail.com</string>
+    <string name="hint_login_password">xxxxxxxx</string>
+    <string name="lbl_login_forget">Forget Password?</string>
+
+    <!-- otp -->
+    <string name="lbl_otp_hi">Hi !</string>
+    <string name="lbl_otp_create">Create a new account</string>
+    <string name="lbl_otp_enter_phone">Enter Your Phone Number</string>
+    <string name="lbl_otp_receive_code">Don\'t receive the OTP? </string>
+    <string name="lbl_otp_resend_code">Resend Code</string>
+
+    <!-- register -->
+    <string name="lbl_register_name">Name</string>
+    <string name="lbl_register_hint_name">Your Name</string>
+    <string name="lbl_register_dob">Date of Birth</string>
+    <string name="lbl_register_gender">Gender</string>
+    <string name="lbl_register_rb_male">Male</string>
+    <string name="lbl_register_rb_female">Female</string>
+    <string name="lbl_register_rb_other">Other</string>
+    <string name="lbl_register_hint_password">Password</string>
+    <string name="lbl_register_cb_agree">    Agree To Term And Service</string>
+
+    <!-- menu -->
+    <string name="menu_moment">Moment</string>
+    <string name="menu_chat">Chat</string>
+    <string name="menu_contacts">Contacts</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_setting">Setting</string>
+
+    <!-- moment -->
+    <string name="lbl_moment_title">Moments</string>
+    <string name="lbl_new_title">New Moment</string>
+    <string name="lbl_new_name">Mewz</string>
+    <string name="lbl_new_mind">What’s on your mind</string>
+
+    <!-- profile -->
+    <string name="lbl_profile_name">Mewz</string>
+    <string name="lbl_profile_phone">09 123 456 789</string>
+    <string name="lbl_profile_date">1998-06-05</string>
+    <string name="lbl_profile_gender">Male</string>
+    <string name="lbl_profile_bookmarked">Bookmarked Moments</string>
+
+    <!-- contact -->
+    <string name="lbl_contact_title">Contacts</string>
+    <string name="lbl_contact_group">Groups(5)</string>
+    <string name="lbl_add_contact_tap">Tap to Scan</string>
+    <string name="lbl_add_contact_scan">Scan the QR code to add your friend in contact.</string>
+    <string name="lbl_contact_empty">No contact or group with name</string>
+    <string name="lbl_contact_empty_name">`Aung Aung`</string>
+    <string name="lbl_contact_exits">exits</string>
+    <string name="lbl_contact_group_title">New Group</string>
+
+    <!-- chat -->
+    <string name="lbl_chat_title">Chats</string>
+    <string name="lbl_chat_active">Active Now</string>
+    <string name="lbl_chat_name">Mewz</string>
+    <string name="lbl_chat_online">Online</string>
+    <string name="lbl_chat_day">Today</string>
+
+
+</resources>

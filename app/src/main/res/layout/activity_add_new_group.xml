@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.contacts.AddNewGroupActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_medium_3">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnDismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dismiss"
+                android:layout_centerVertical="true"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/yorkie_semibold"
+                android:text="@string/lbl_contact_group_title"
+                android:textSize="@dimen/text_heading_1x"
+                android:textColor="@color/colorPrimary"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_100dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnCreateGroup"
+                android:layout_width="@dimen/margin_60dp"
+                android:layout_height="@dimen/margin_xlarge"
+                android:src="@drawable/create"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_below="@id/appBar"
+        android:id="@+id/tvGroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group Name"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/text_regular_2x"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_below="@id/tvGroupName"
+        android:id="@+id/etGroupName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"
+        android:paddingBottom="@dimen/margin_large" />
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_below="@id/etGroupName"
+        android:id="@+id/etSearchContacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_search_box"
+        android:visibility="visible"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="Search"
+        app:searchIcon="@drawable/baseline_search_dark_blue_24dp"
+        app:closeIcon="@drawable/baseline_close_dark_blue_24dp"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/etSearchContacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMemberList"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_120dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/rvMemberList"
+                android:id="@+id/rvContactGroupList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layout_marginTop="@dimen/margin_card_medium"
+                android:layout_marginBottom="@dimen/margin_medium_2"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/rvMemberList"
+                android:id="@+id/rvAlphabetList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:layout_marginTop="@dimen/margin_medium_3"
+                android:layout_alignParentEnd="true"
+                android:background="@color/box"/>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

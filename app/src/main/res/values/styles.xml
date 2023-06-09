@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <style name="yorkie">
+        <item name="fontFamily">@font/yorkie_semibold</item>
+    </style>
+    <style name="notosans">
+        <item name="fontFamily">@font/notosans_medium</item>
+    </style>
+</resources>

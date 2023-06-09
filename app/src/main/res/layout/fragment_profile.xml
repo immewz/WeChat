@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_medium_3">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/yorkie_semibold"
+                android:text="Me"
+                android:textSize="@dimen/text_heading_2x"
+                android:textColor="@color/colorPrimary"
+                android:layout_centerVertical="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnEditProfile"
+                android:layout_width="@dimen/margin_36dp"
+                android:layout_height="@dimen/margin_36dp"
+                android:src="@drawable/button_edit"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium_3">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileBoard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_150dp"
+            app:cardCornerRadius="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvProfileImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/margin_60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_medium_2">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivProfileImage"
+                        android:layout_width="@dimen/margin_120dp"
+                        android:layout_height="@dimen/margin_120dp"
+                        android:src="@drawable/mew"
+                        android:scaleType="centerCrop"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnChangeProfile"
+                    android:layout_width="@dimen/margin_medium_3"
+                    android:layout_height="@dimen/margin_medium_3"
+                    android:src="@drawable/button_image"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/margin_medium_2"
+                    android:layout_marginStart="@dimen/margin_medium_3"
+                    android:elevation="@dimen/margin_medium_3"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnShowCode"
+                    android:layout_width="@dimen/margin_xxlarge"
+                    android:layout_height="@dimen/margin_xxlarge"
+                    android:src="@drawable/button_code"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/margin_medium_2"
+                    android:layout_marginStart="90dp"
+                    android:elevation="@dimen/margin_medium_3"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_toEndOf="@id/cvProfileImage"
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yorkie_semibold"
+                    android:text="@string/lbl_profile_name"
+                    android:textSize="@dimen/text_regular_3x"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:layout_marginStart="@dimen/margin_large"/>
+
+                <LinearLayout
+                    android:layout_below="@id/tvProfileName"
+                    android:layout_toEndOf="@id/cvProfileImage"
+                    android:id="@+id/llPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginHorizontal="@dimen/margin_large">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/margin_large"
+                        android:layout_height="@dimen/margin_large"
+                        android:src="@drawable/phone"
+                        android:layout_marginEnd="@dimen/margin_medium"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/lbl_profile_phone"
+                        android:textSize="@dimen/text_regular"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_below="@id/llPhoneNumber"
+                    android:layout_toEndOf="@id/cvProfileImage"
+                    android:id="@+id/llDateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginHorizontal="@dimen/margin_large">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/margin_large"
+                        android:layout_height="@dimen/margin_large"
+                        android:src="@drawable/date"
+                        android:layout_marginEnd="@dimen/margin_medium"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDateOfBirth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/lbl_profile_date"
+                        android:textSize="@dimen/text_regular"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_below="@id/llDateOfBirth"
+                    android:layout_toEndOf="@id/cvProfileImage"
+                    android:id="@+id/llGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginHorizontal="@dimen/margin_large">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/margin_large"
+                        android:layout_height="@dimen/margin_large"
+                        android:src="@drawable/gender"
+                        android:layout_marginEnd="@dimen/margin_medium"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/lbl_profile_gender"
+                        android:textSize="@dimen/text_regular"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_below="@id/cvProfileBoard"
+            android:id="@+id/tvBookMarked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/yorkie_semibold"
+            android:text="@string/lbl_profile_bookmarked"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/text_regular_3x"
+            android:layout_marginTop="@dimen/margin_medium_3"/>
+
+        <View
+            android:layout_below="@id/tvBookMarked"
+            android:layout_width="@dimen/margin_220dp"
+            android:layout_height="@dimen/margin_1dp"
+            android:background="@color/colorPrimaryText"/>
+
+        <include
+            android:id="@+id/vpProfileMoment"
+            android:layout_below="@id/tvBookMarked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/view_pod_moment"
+            android:layout_marginTop="@dimen/margin_medium_2"/>
+
+
+    </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

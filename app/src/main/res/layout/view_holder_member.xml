@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/margin_90dp"
+    android:layout_height="@dimen/margin_100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="@dimen/margin_card_medium">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnRemove"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/button_remove"
+        android:elevation="@dimen/margin_card_medium_2"
+        android:layout_gravity="end"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="80dp"
+        android:layout_height="93dp"
+        android:background="@color/box"
+        android:layout_gravity="center">
+
+        <FrameLayout
+            android:id="@+id/flContactProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium">
+
+            <com.mewz.wechat.views.components.RoundedProfileImage
+                android:id="@+id/ivContactProfileImage"
+                android:layout_width="@dimen/margin_50dp"
+                android:layout_height="@dimen/margin_50dp"
+                android:scaleType="centerCrop"
+                app:cornerRadius="@dimen/margin_25dp"
+                app:srcCompat="@drawable/mew"/>
+
+            <com.mewz.wechat.views.components.RoundedProfileImage
+                android:id="@+id/ivContactActive"
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_medium_2"
+                android:scaleType="centerCrop"
+                app:cornerRadius="@dimen/margin_medium"
+                android:src="@color/colorAccent"
+                android:layout_gravity="end|bottom" />
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Mewz"
+            android:textSize="@dimen/text_smaller"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="@dimen/margin_card_medium_2"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</FrameLayout>
