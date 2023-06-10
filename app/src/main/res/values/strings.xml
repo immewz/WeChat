@@ -70,6 +70,7 @@
     <string name="lbl_chat_name">Mewz</string>
     <string name="lbl_chat_online">Online</string>
     <string name="lbl_chat_day">Today</string>
+    <string name="lbl_chat_message">Type a message...</string>
 
 
 </resources>

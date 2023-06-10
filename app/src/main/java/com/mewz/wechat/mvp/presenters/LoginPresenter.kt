@@ -5,5 +5,5 @@ import com.mewz.wechat.mvp.views.LoginView
 
 interface LoginPresenter: BasePresenter<LoginView> {
     fun onTapBackButton()
-    fun onTapLoginButton()
+    fun onTapLoginButton(phone: String, email: String, password: String)
 }

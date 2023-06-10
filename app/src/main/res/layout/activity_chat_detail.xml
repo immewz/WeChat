@@ -117,4 +117,103 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="@dimen/margin_card_medium_2">
+
+        <FrameLayout
+            android:id="@+id/flSendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMessage"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosans_medium"
+                android:hint="@string/lbl_chat_message"
+                android:layout_marginStart="@dimen/margin_medium"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnSendMessage"
+                android:layout_width="@dimen/margin_40dp"
+                android:layout_height="@dimen/margin_40dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/margin_medium"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="20dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/margin_card_medium_2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/button_send" />
+
+            </com.google.android.material.card.MaterialCardView>
+            
+            
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_below="@id/flSendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="@dimen/margin_card_medium">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/box"
+                app:cardCornerRadius="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium_2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/margin_card_medium_2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/photo"
+                    android:tint="@color/colorPrimary"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_camera"
+                android:layout_marginEnd="@dimen/margin_card_medium_2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnGif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_gif"
+                android:layout_marginEnd="@dimen/margin_card_medium_2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_loaction"
+                android:layout_marginEnd="@dimen/margin_card_medium_2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnMic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_mic"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

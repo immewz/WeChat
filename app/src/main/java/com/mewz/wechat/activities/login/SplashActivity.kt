@@ -50,6 +50,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun navigateToLoginScreen() {
         startActivity(LoginActivity.newIntent(this))
+        finish()
     }
 
     override fun navigateToOtpScreen() {

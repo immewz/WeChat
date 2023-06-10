@@ -45,7 +45,14 @@ class LoginActivity : BaseActivity(), LoginView {
         }
 
         binding.btnLogin.setOnClickListener {
-            mPresenter.onTapLoginButton()
+            val phone = binding.etPhone.text.toString()
+            val gmail = binding.etGmail.text.toString()
+            val password = binding.etPassword.text.toString()
+
+            if (phone != "" && gmail != "" && password != ""){
+                mPresenter.onTapLoginButton(phone, gmail, password)
+            }
+
         }
     }
 
@@ -55,5 +62,6 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun navigateToMainScreen() {
         startActivity(MainActivity.newIntent(this))
+        finish()
     }
 }

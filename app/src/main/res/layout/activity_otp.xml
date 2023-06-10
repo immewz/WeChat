@@ -84,7 +84,7 @@
             app:height="@dimen/margin_xxlarge"
             app:box_margin="@dimen/margin_medium"
             app:length="4"
-            app:otp="1234"
+            app:otp=""
             android:textColor="@color/colorPrimaryText"
             app:otp_text_size="@dimen/text_regular_3x"
             app:otp_box_background="@drawable/background_otp_view"

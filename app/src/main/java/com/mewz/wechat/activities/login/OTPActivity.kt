@@ -3,6 +3,8 @@ package com.mewz.wechat.activities.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.mewz.wechat.activities.BaseActivity
 import com.mewz.wechat.databinding.ActivityOtpBinding
 import com.mewz.wechat.mvp.presenters.OtpPresenter
@@ -15,6 +17,7 @@ class OTPActivity : BaseActivity(), OtpView {
 
     private lateinit var mPresenter: OtpPresenter
 
+    private var mOTPCode = ""
     companion object{
         fun newIntent(context: Context): Intent {
             return Intent(context,OTPActivity::class.java)
@@ -30,6 +33,7 @@ class OTPActivity : BaseActivity(), OtpView {
 
         setUpListeners()
 
+        mPresenter.onUiReady(this, this)
 
     }
 
@@ -52,7 +56,15 @@ class OTPActivity : BaseActivity(), OtpView {
     }
 
     override fun navigateToRegisterScreen() {
-        startActivity(RegisterActivity.newIntent(this))
-        finish()
+        if(binding.otpView.otp.toString() == mOTPCode) {
+            startActivity(RegisterActivity.newIntent(this))
+            finish()
+        }
+    }
+
+    override fun showOtp(otp: String) {
+        mOTPCode = otp
+        Toast.makeText(this, otp, Toast.LENGTH_SHORT).show()
+        binding.otpView.setOTP(otp)
     }
 }
