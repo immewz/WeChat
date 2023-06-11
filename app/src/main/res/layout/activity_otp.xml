@@ -54,6 +54,19 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_below="@id/ivLogo"
+            android:id="@+id/etGmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_login_gmail"
+            android:textColorHint="@color/colorHintText"
+            android:textSize="@dimen/text_regular_2x"
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="@style/yorkie"
+            android:inputType="text"
+            android:layout_marginHorizontal="@dimen/margin_medium_3"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_below="@id/etGmail"
             android:id="@+id/etPhone"
             android:layout_width="@dimen/width_otp_phone_et"
             android:layout_height="wrap_content"
@@ -67,7 +80,7 @@
             android:layout_marginLeft="@dimen/margin_large"/>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_below="@id/ivLogo"
+            android:layout_below="@id/etGmail"
             android:id="@+id/btnGetOtp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

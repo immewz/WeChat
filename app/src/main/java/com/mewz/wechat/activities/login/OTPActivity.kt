@@ -56,8 +56,11 @@ class OTPActivity : BaseActivity(), OtpView {
     }
 
     override fun navigateToRegisterScreen() {
+        val email = binding.etGmail.text.toString()
+        val phone = binding.etPhone.text.toString()
+
         if(binding.otpView.otp.toString() == mOTPCode) {
-            startActivity(RegisterActivity.newIntent(this))
+            startActivity(RegisterActivity.newIntent(this, email, phone))
             finish()
         }
     }
