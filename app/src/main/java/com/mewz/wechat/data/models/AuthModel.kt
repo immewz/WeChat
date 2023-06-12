@@ -11,4 +11,6 @@ interface AuthModel {
 
     fun register(userName: String, email: String, phone: String, password: String,
                  dateOfBirth: String, gender: String, imageUrl: String, onSuccess: (user: UserVO) -> Unit, onFailure: (String) -> Unit)
+
+    fun getUserId() : String
 }

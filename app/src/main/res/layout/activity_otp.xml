@@ -57,11 +57,11 @@
             android:id="@+id/etGmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_login_gmail"
+            android:hint="Enter Your Email"
             android:textColorHint="@color/colorHintText"
-            android:textSize="@dimen/text_regular_2x"
+            android:textSize="@dimen/text_regular"
             android:textColor="@color/colorPrimaryText"
-            android:textAppearance="@style/yorkie"
+            android:textAppearance="@style/notosans"
             android:inputType="text"
             android:layout_marginHorizontal="@dimen/margin_medium_3"/>
 
@@ -76,7 +76,7 @@
             android:textColor="@color/colorPrimaryText"
             android:textAppearance="@style/notosans"
             android:inputType="phone"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_card_medium_2"
             android:layout_marginLeft="@dimen/margin_large"/>
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -86,6 +86,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/button_get_otp"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_large"/>
 
         <in.aabhasjindal.otptextview.OtpTextView

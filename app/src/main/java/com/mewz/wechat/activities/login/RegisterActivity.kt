@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.Intent.EXTRA_EMAIL
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
@@ -63,7 +64,6 @@ class RegisterActivity : BaseActivity(), RegisterView {
         setUpDateOfBirth()
         setUpGender()
 
-
     }
 
 
@@ -108,7 +108,6 @@ class RegisterActivity : BaseActivity(), RegisterView {
         binding.spinnerYear.adapter = yearAdapter
 
         setUpDateOfBirthSpinner()
-//        Toast.makeText(this, day, Toast.LENGTH_SHORT).show()
 
     }
 
@@ -152,6 +151,10 @@ class RegisterActivity : BaseActivity(), RegisterView {
     }
 
     private fun getMonths(): List<String> {
+        val months = mutableListOf<String>("Month")
+        for (i in 1..12) {
+            months.add(i.toString())
+        }
         return months
     }
 
@@ -199,6 +202,7 @@ class RegisterActivity : BaseActivity(), RegisterView {
         startActivityForResult(Intent.createChooser(intent, "Selected Picture"), PICK_IMAGE_REQUEST)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE_REQUEST) {

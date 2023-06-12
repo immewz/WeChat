@@ -30,4 +30,8 @@ object AuthModelImpl: AuthModel {
     ) {
         mAuthManger.register(userName, email, phone, password, dateOfBirth, gender, imageUrl, onSuccess, onFailure)
     }
+
+    override fun getUserId(): String {
+        return mAuthManger.getUserId()
+    }
 }

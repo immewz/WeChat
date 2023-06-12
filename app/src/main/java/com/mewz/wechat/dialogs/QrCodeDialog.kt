@@ -16,8 +16,8 @@ class QrCodeDialog(context: Context) : Dialog(context, android.R.style.Theme_Dev
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val windowParams = window?.attributes
-        windowParams?.width = WindowManager.LayoutParams.MATCH_PARENT
-        windowParams?.height = WindowManager.LayoutParams.MATCH_PARENT
+        windowParams?.width = WindowManager.LayoutParams.WRAP_CONTENT
+        windowParams?.height = WindowManager.LayoutParams.WRAP_CONTENT
         window?.attributes = windowParams
     }
 }

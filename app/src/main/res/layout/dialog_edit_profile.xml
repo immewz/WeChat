@@ -129,7 +129,7 @@
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_regular"
             android:textStyle="bold"
-            android:checked="true"
+            android:checked="false"
             android:buttonTint="@color/colorPrimary"/>
 
         <RadioButton
