@@ -1,5 +1,6 @@
 package com.mewz.wechat.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,5 +29,11 @@ class NewMomentImageAdapter(
         }else {
             holder.bindData(imageList[position],position,itemCount)
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewData(image: String) {
+        imageList.add(0,image)
+        notifyDataSetChanged()
     }
 }

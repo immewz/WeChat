@@ -9,6 +9,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.mewz.wechat.data.vos.MomentVO
+import com.mewz.wechat.data.vos.MyMomentVO
 import com.mewz.wechat.data.vos.UserVO
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -19,6 +21,8 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
     private var database: FirebaseFirestore = Firebase.firestore
     private var storageRef = FirebaseStorage.getInstance().reference
 
+    // General
+    private var mMomentImages: String = ""
     override fun addUser(user: UserVO) {
         val userMap = hashMapOf(
             "id" to user.userId,
@@ -111,4 +115,68 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
                 }
             }
     }
+
+    override fun createMoment(moment: MyMomentVO) {
+        val momentMap = hashMapOf(
+            "id" to moment.id,
+            "user_id" to moment.userId,
+            "user_name" to moment.userName,
+            "user_profile_image" to moment.userProfileImage,
+            "caption" to moment.caption,
+            "image_url" to moment.imageUrl,
+            "is_bookmarked" to moment.isBookmarked
+        )
+
+        database.collection("moments")
+            .document(moment.id)
+            .set(momentMap)
+            .addOnSuccessListener {
+                Log.i("FirebaseCall", "Successfully Created")
+            }.addOnFailureListener {
+                Log.i("FirebaseCall", "Failed Created")
+            }
+    }
+
+    override fun uploadAndUpdateMomentImage(bitmap: Bitmap) {
+        val urlTask = changeBitmapToUrlString(bitmap)
+
+        urlTask.addOnCompleteListener {
+            val imageUrl = it.result?.toString()
+            mMomentImages += "$imageUrl,"
+        }
+    }
+
+    override fun getMomentImages(): String {
+        return mMomentImages
+    }
+
+    override fun getMoments(
+        onSuccess: (moments: List<MyMomentVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        database.collection("moments")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.localizedMessage ?: "Check Internet Connection")
+                } ?: run {
+                    val momentList: MutableList<MyMomentVO> = arrayListOf()
+                    val result = value?.documents ?: arrayListOf()
+                    for (document in result) {
+                        val data = document.data
+                        val id = data?.get("id") as String
+                        val userId = data["user_id"] as? String ?: ""
+                        val userName = data["user_name"] as String
+                        val userProfileImage = data["user_profile_image"] as String
+                        val caption = data["caption"] as String
+                        val imageUrl = data["image_url"] as String
+                        val isBookmarked = data["is_bookmarked"] as? Boolean ?: false
+                        val moment = MyMomentVO(id,userId, userName, userProfileImage, caption, imageUrl,isBookmarked)
+                        momentList.add(moment)
+                    }
+                    onSuccess(momentList)
+                }
+            }
+    }
+
+
 }
