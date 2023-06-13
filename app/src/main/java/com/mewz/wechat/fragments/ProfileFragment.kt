@@ -8,6 +8,7 @@ import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,8 @@ import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.mewz.wechat.activities.login.RegisterActivity
+import com.mewz.wechat.data.vos.MomentVO
+import com.mewz.wechat.data.vos.MyMomentVO
 import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.DialogEditProfileBinding
 import com.mewz.wechat.databinding.DialogQrCodeBinding
@@ -51,6 +54,7 @@ class ProfileFragment : Fragment(), ProfileView {
     private val PICK_IMAGE_REQUEST = 1111
     private var bitmap: Bitmap? = null
     private var mUser:UserVO? = null
+    private var mMomentList:ArrayList<MyMomentVO> = arrayListOf()
 
     private var email:String = ""
     private var password:String = ""
@@ -100,6 +104,11 @@ class ProfileFragment : Fragment(), ProfileView {
         binding.btnShowCode.setOnClickListener {
             mPresenter.onTapQrCodeImage()
         }
+    }
+
+    private fun setUpViewPod() {
+        mViewPod = binding.vpProfileMoment.root
+        mViewPod.setUpMomentViewPod(mPresenter)
     }
 
     override fun showUserInformation(userList: List<UserVO>) {
@@ -222,6 +231,29 @@ class ProfileFragment : Fragment(), ProfileView {
         dialogBinding.ivMyQrCode.setImageBitmap(textToImageEncode(qrCode))
 
         dialog.show()
+    }
+
+    override fun showMoments(momentList: List<MyMomentVO>) {
+        for (moment in momentList) {
+            if(moment.isBookmarked) {
+                mMomentList.add(moment)
+            }
+        }
+        mViewPod.setNewData(mMomentList)
+        Log.d("ProfileFragment","$momentList")
+    }
+
+    override fun getMomentIsBookmarked(id: String, bookmarked: Boolean) {
+        for(moment in mMomentList) {
+            if(id == moment.id) {
+                if(!bookmarked) {
+                    moment.isBookmarked = false
+                    mPresenter.createMoment(moment)
+                    break
+                }
+            }
+        }
+        mViewPod.setNewData(mMomentList)
     }
 
     @Throws(WriterException::class)
@@ -359,10 +391,6 @@ class ProfileFragment : Fragment(), ProfileView {
         }
     }
 
-    private fun setUpViewPod() {
-        mViewPod = binding.vpProfileMoment.root
-        mViewPod.setUpMomentViewPod()
-    }
 
 
 }

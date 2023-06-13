@@ -1,6 +1,8 @@
 package com.mewz.wechat.adapters
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
+import com.mewz.wechat.data.vos.MyMomentVO
 import com.mewz.wechat.views.viewholders.AbstractBaseViewHolder
 
 abstract class BaseRecyclerAdapter<T : AbstractBaseViewHolder<W>, W> : RecyclerView.Adapter<T>() {
@@ -14,6 +16,16 @@ abstract class BaseRecyclerAdapter<T : AbstractBaseViewHolder<W>, W> : RecyclerV
     }
 
     override fun getItemCount(): Int {
-        return 3
+        return mData.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewData(newData: List<W>) {
+        if (newData.isEmpty()) {
+            mData.clear()
+        } else {
+            mData = ArrayList(newData)
+        }
+        notifyDataSetChanged()
     }
 }

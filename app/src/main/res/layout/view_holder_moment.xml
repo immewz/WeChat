@@ -51,40 +51,25 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/margin_small"/>
 
-    <LinearLayout
-        android:id="@+id/llMomentCaptionAndImage"
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_below="@id/cvProfileImage"
+        android:id="@+id/tvCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fontFamily="@font/notosans_medium"
+        android:text="A machine resembling a human being and able to replicate certain human movements and functions automatically."
+        android:textColor="@color/colorPrimaryText"
+        android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_medium"
-            android:text="A machine resembling a human being and able to replicate certain human movements and functions automatically."
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginTop="@dimen/margin_medium"/>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvMomentImage"
-            android:layout_width="match_parent"
-            android:layout_height="165dp"
-            app:cardCornerRadius="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium_2">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/post"
-                android:scaleType="centerCrop"/>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_below="@id/tvCaption"
+        android:id="@+id/viewPagerImage"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_below="@id/viewPagerImage"
         android:id="@+id/ivLoveReact"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/margin_medium_3"
@@ -92,7 +77,7 @@
         android:layout_marginTop="@dimen/margin_medium_3"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_below="@id/viewPagerImage"
         android:layout_toEndOf="@id/ivLoveReact"
         android:id="@+id/tvReactCount"
         android:layout_width="wrap_content"
@@ -100,11 +85,11 @@
         android:text="3"
         android:textColor="@color/colorPrimaryText"
         android:layout_marginLeft="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_medium_2"/>
+        android:layout_marginTop="@dimen/margin_medium_3"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_below="@id/llMomentCaptionAndImage"
-        android:id="@+id/ivBookMark"
+        android:layout_below="@id/viewPagerImage"
+        android:id="@+id/btnBookMark"
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:src="@drawable/bookmark"
@@ -112,7 +97,7 @@
         android:layout_alignParentEnd="true"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_below="@id/llMomentCaptionAndImage"
+        android:layout_below="@id/viewPagerImage"
         android:layout_toStartOf="@id/tvCommentCount"
         android:id="@+id/ivComment"
         android:layout_width="@dimen/margin_xlarge"
@@ -121,15 +106,15 @@
         android:layout_marginTop="@dimen/margin_card_medium_2"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_below="@id/llMomentCaptionAndImage"
-        android:layout_toStartOf="@id/ivBookMark"
+        android:layout_below="@id/viewPagerImage"
+        android:layout_toStartOf="@id/btnBookMark"
         android:id="@+id/tvCommentCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3"
         android:textColor="@color/colorPrimaryText"
         android:layout_marginRight="@dimen/margin_card_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2"/>
+        android:layout_marginTop="@dimen/margin_medium_3"/>
 
     <View
         android:layout_below="@id/ivLoveReact"

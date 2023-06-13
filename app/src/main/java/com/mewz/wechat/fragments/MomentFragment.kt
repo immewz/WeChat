@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.mewz.wechat.R
 import com.mewz.wechat.activities.moments.NewMomentActivity
+import com.mewz.wechat.data.vos.MyMomentVO
 import com.mewz.wechat.databinding.FragmentMomentBinding
 import com.mewz.wechat.mvp.presenters.MomentPresenter
 import com.mewz.wechat.mvp.presenters.impls.MomentPresenterImpl
@@ -22,6 +22,8 @@ class MomentFragment : Fragment(), MomentView {
     private lateinit var mViewPod: MomentViewPod
 
     private lateinit var mPresenter: MomentPresenter
+
+    private var mMomentList: List<MyMomentVO> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +45,7 @@ class MomentFragment : Fragment(), MomentView {
         setUpViewPod()
         setUpListeners()
 
-
+        mPresenter.onUiReady(requireActivity(), this)
     }
 
     private fun setUpPresenter() {
@@ -59,11 +61,33 @@ class MomentFragment : Fragment(), MomentView {
 
     private fun setUpViewPod() {
         mViewPod = binding.vpMoment.root
-        mViewPod.setUpMomentViewPod()
+        mViewPod.setUpMomentViewPod(mPresenter)
     }
 
     override fun navigateToNewMomentScreen() {
         startActivity(context?.let { NewMomentActivity.newIntent(it) })
+    }
+
+    override fun showMoments(moment: List<MyMomentVO>) {
+        mMomentList = moment
+        mViewPod.setNewData(moment)
+    }
+
+    override fun getMomentIsBookmarked(id: String, isBookmarked: Boolean) {
+        for (moment in mMomentList) {
+            if (id == moment.id) {
+                if (isBookmarked) {
+                    moment.isBookmarked = true
+                    mPresenter.createMoment(moment)
+                    break
+                } else {
+                    moment.isBookmarked = false
+                    mPresenter.createMoment(moment)
+                    break
+                }
+            }
+        }
+        mViewPod.setNewData(mMomentList)
     }
 
     override fun showError(error: String) {
