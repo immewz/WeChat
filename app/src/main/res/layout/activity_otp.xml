@@ -57,7 +57,8 @@
             android:id="@+id/etGmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Your Email"
+            android:fontFamily="@font/yorkie_bold"
+            android:hint="@string/lbl_otp_email"
             android:textColorHint="@color/colorHintText"
             android:textSize="@dimen/text_regular"
             android:textColor="@color/colorPrimaryText"
@@ -65,32 +66,41 @@
             android:inputType="text"
             android:layout_marginHorizontal="@dimen/margin_medium_3"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <LinearLayout
+            android:id="@+id/llGetOtp"
             android:layout_below="@id/etGmail"
-            android:id="@+id/etPhone"
-            android:layout_width="@dimen/width_otp_phone_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/lbl_otp_enter_phone"
-            android:textColorHint="@color/colorHintText"
-            android:textSize="@dimen/text_regular"
-            android:textColor="@color/colorPrimaryText"
-            android:textAppearance="@style/notosans"
-            android:inputType="phone"
-            android:layout_marginTop="@dimen/margin_card_medium_2"
-            android:layout_marginLeft="@dimen/margin_large"/>
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/margin_medium_3"
+            android:weightSum="3">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_below="@id/etGmail"
-            android:id="@+id/btnGetOtp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/button_get_otp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_large"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/yorkie_bold"
+                android:hint="@string/lbl_otp_enter_phone"
+                android:textColorHint="@color/colorHintText"
+                android:textSize="@dimen/text_regular"
+                android:textColor="@color/colorPrimaryText"
+                android:textAppearance="@style/notosans"
+                android:inputType="phone"
+                android:layout_marginTop="@dimen/margin_card_medium_2"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_weight="2"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnGetOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_get_otp"
+                android:layout_marginTop="@dimen/margin_small"/>
+
+        </LinearLayout>
 
         <in.aabhasjindal.otptextview.OtpTextView
-            android:layout_below="@id/etPhone"
+            android:layout_below="@id/llGetOtp"
             android:id="@+id/otpView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

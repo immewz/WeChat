@@ -62,6 +62,5 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun navigateToMainScreen() {
         startActivity(MainActivity.newIntent(this))
-        finish()
     }
 }

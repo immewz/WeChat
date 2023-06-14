@@ -29,9 +29,9 @@ class NewMomentActivity : BaseActivity(), NewMomentView {
 
     private lateinit var mPresenter: NewMomentPresenter
 
-    private var bitmap: Bitmap? = null
-    private var mMoment: MyMomentVO? = null
-    private var momentImages: String = ""
+//    private var bitmap: Bitmap? = null
+//    private var mMoment: MyMomentVO? = null
+//    private var momentImages: String = ""
     private var userName: String = ""
     private var userProfileImage: String = ""
     private var userId:String = ""

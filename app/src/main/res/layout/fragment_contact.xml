@@ -107,7 +107,7 @@
                 android:layout_below="@id/rvGroupList"
                 android:id="@+id/rvAlphabetList"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:layout_marginTop="@dimen/margin_medium_3"
                 android:layout_alignParentEnd="true"

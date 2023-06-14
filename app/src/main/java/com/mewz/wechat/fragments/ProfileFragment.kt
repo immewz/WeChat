@@ -152,7 +152,7 @@ class ProfileFragment : Fragment(), ProfileView {
             val userName = dialogBinding.etName.text.toString()
             val phone = dialogBinding.etPhone.text.toString()
             val birthDate = "$year-$month-$day"
-            val user = UserVO(mPresenter.getUserId(), userName, phone, email, password, birthDate, gender, qrCode, imageUrl)
+            val user = UserVO(mPresenter.getUserId(), userName, email, phone, password, birthDate, gender, qrCode, imageUrl)
             mPresenter.updateUserInformation(user)
             dialog.dismiss()
         }

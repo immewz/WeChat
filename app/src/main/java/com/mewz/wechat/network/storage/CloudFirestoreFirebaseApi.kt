@@ -17,4 +17,8 @@ interface CloudFirestoreFirebaseApi {
     fun getMomentImages()  : String
     fun getMoments(onSuccess: (moments: List<MyMomentVO>) -> Unit, onFailure: (String) -> Unit)
 
+    fun createContact(scannerId:String,qrExporterId:String,contact: UserVO)
+
+    fun getContacts(scannerId:String,onSuccess: (users: List<UserVO>) -> Unit, onFailure: (String) -> Unit)
+
 }

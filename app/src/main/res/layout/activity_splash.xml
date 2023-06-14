@@ -26,6 +26,7 @@
             android:text="@string/lbl_splash_first"
             android:textSize="@dimen/text_regular_3x"
             android:textColor="@color/colorPrimaryText"
+            android:textAlignment="center"
             android:textAppearance="@style/yorkie"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/splash_between_logo_and_text"/>
@@ -37,28 +38,33 @@
             android:layout_height="wrap_content"
             android:text="@string/lbl_splash_second"
             android:textSize="@dimen/text_13dp"
+            android:textAlignment="center"
             android:textAppearance="@style/notosans"
             android:textColor="@color/colorSecondaryText"
             android:layout_centerHorizontal="true" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnSignUp"
-            android:layout_width="@dimen/weight_splash_button"
-            android:layout_height="@dimen/height_splash_button"
-            android:src="@drawable/button_sign_up"
-            android:layout_marginLeft="@dimen/margin_xxlarge"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_xlarge"/>
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:layout_centerHorizontal="true">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnLogin"
-            android:layout_width="@dimen/weight_splash_button"
-            android:layout_height="@dimen/height_splash_button"
-            android:src="@drawable/button_login"
-            android:layout_toEndOf="@id/btnSignUp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/margin_medium_3"
-            android:layout_marginBottom="@dimen/margin_xlarge"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSignUp"
+                android:layout_width="@dimen/weight_splash_button"
+                android:layout_height="@dimen/height_splash_button"
+                android:src="@drawable/button_sign_up" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnLogin"
+                android:layout_width="@dimen/weight_splash_button"
+                android:layout_height="@dimen/height_splash_button"
+                android:src="@drawable/button_login"
+                android:layout_marginLeft="@dimen/margin_medium_3" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 

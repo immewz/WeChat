@@ -11,4 +11,8 @@ interface UserModel {
     fun addUser(user: UserVO)
     fun uploadAndUpdateProfileImage(bitmap: Bitmap, user: UserVO)
     fun getUser(onSuccess: (users: List<UserVO>) -> Unit, onFailure: (String) -> Unit)
+
+    fun createContact(scannerId:String,qrExporterId:String,contact: UserVO)
+
+    fun getContacts(scannerId:String,onSuccess: (users: List<UserVO>) -> Unit, onFailure: (String) -> Unit)
 }

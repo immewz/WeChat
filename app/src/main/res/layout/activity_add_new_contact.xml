@@ -48,7 +48,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_below="@id/cvTapScan"
-        android:id="@+id/btnScan"
+        android:id="@+id/ivScan"
         android:layout_width="@dimen/margin_280dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/button_scan"
@@ -56,7 +56,7 @@
         android:layout_centerHorizontal="true"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_below="@id/btnScan"
+        android:layout_below="@id/ivScan"
         android:id="@+id/btnScanImage"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/margin_xxxlarge"

@@ -27,8 +27,8 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
         val userMap = hashMapOf(
             "id" to user.userId,
             "name" to user.userName,
-            "phone" to user.phone,
             "email" to user.email,
+            "phone" to user.phone,
             "password" to user.password,
             "date_of_birth" to user.dateOfBirth,
             "gender" to user.gender,
@@ -174,6 +174,74 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
                         momentList.add(moment)
                     }
                     onSuccess(momentList)
+                }
+            }
+    }
+
+    override fun createContact(scannerId: String, qrExporterId: String, contact: UserVO) {
+        val userMap = hashMapOf(
+            "id" to contact.userId,
+            "name" to contact.userName,
+            "email" to contact.email,
+            "phone" to contact.phone,
+            "password" to contact.password,
+            "date_of_birth" to contact.dateOfBirth,
+            "gender" to contact.gender,
+            "qr_code" to contact.userId,
+            "image_url" to contact.imageUrl
+        )
+
+        database.collection("users")
+            .document(scannerId)
+            .collection("contacts")
+            .document(qrExporterId)
+            .set(userMap)
+            .addOnSuccessListener {
+                Log.i("FirebaseCall", "Successfully Added")
+            }.addOnFailureListener {
+                Log.i("FirebaseCall", "Failed Added")
+            }
+    }
+
+    override fun getContacts(
+        scannerId: String,
+        onSuccess: (users: List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        database.collection("users")
+            .document(scannerId)
+            .collection("contacts")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.localizedMessage ?: "Check Internet Connection")
+                } ?: run {
+                    val contactList: MutableList<UserVO> = arrayListOf()
+                    val result = value?.documents ?: arrayListOf()
+                    for (document in result) {
+                        val data = document.data
+                        val id = data?.get("id") as String
+                        val name = data["name"] as String
+                        val phone = data["phone"] as String
+                        val email = data["email"] as String
+                        val password = data["password"] as String
+                        val dateOfBirth = data["date_of_birth"] as String
+                        val gender = data["gender"] as String
+                        val qrCode = data["qr_code"] as String
+                        val imageUrl = data["image_url"] as String
+                        val contact = UserVO(
+                            id,
+                            name,
+                            email,
+                            phone,
+                            password,
+                            dateOfBirth,
+                            gender,
+                            qrCode,
+                            imageUrl
+                        )
+                        contactList.add(contact)
+                    }
+                    onSuccess(contactList)
                 }
             }
     }

@@ -77,7 +77,7 @@
     <!-- register -->
     <dimen name="width_register_profile">120dp</dimen>
     <dimen name="height_register_profile">120dp</dimen>
-
+    <dimen name="margin_160dp">160dp</dimen>
 
 
 </resources>
