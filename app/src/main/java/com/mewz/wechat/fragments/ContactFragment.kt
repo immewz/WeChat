@@ -1,6 +1,7 @@
 package com.mewz.wechat.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.mewz.wechat.adapters.AlphabetAdapter
 import com.mewz.wechat.adapters.ContactAdapter
 import com.mewz.wechat.adapters.ContactGroupAdapter
 import com.mewz.wechat.adapters.GroupAdapter
+import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.FragmentContactBinding
 import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
 import com.mewz.wechat.delegtes.GroupItemViewHolderDelegate
@@ -23,14 +25,16 @@ import com.mewz.wechat.mvp.presenters.ContactPresenter
 import com.mewz.wechat.mvp.presenters.impls.ContactPresenterImpl
 import com.mewz.wechat.mvp.views.ContactView
 import com.mewz.wechat.utils.DummyData
+import com.mewz.wechat.utils.DummyData.getAlphabetList
+import com.mewz.wechat.views.viewpods.ContactViewPod
 
 class ContactFragment : Fragment(), ContactView {
 
     private lateinit var binding: FragmentContactBinding
 
     private lateinit var mAdapter: GroupAdapter
-    private lateinit var mContactAdapter: ContactGroupAdapter
-    private lateinit var mAlphabetAdapter: AlphabetAdapter
+
+    private lateinit var mViewPod: ContactViewPod
 
     private lateinit var mPresenter: ContactPresenter
 
@@ -52,6 +56,7 @@ class ContactFragment : Fragment(), ContactView {
         setUpPresenter()
 
         setUpRecyclerView()
+        setUpViewPod()
         setUpListeners()
     }
 
@@ -70,23 +75,18 @@ class ContactFragment : Fragment(), ContactView {
         }
     }
 
+    private fun setUpViewPod() {
+        mViewPod = binding.rvContactGroup.root
+        mViewPod.setUpContactGroupViewPod()
+
+        mPresenter.getContacts(mPresenter.getUserId())
+    }
+
     private fun setUpRecyclerView() {
         mAdapter = GroupAdapter(mPresenter)
         binding.rvGroupList.adapter = mAdapter
         binding.rvGroupList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-        mContactAdapter = ContactGroupAdapter()
-        binding.rvContactGroupList.adapter = mContactAdapter
-        binding.rvContactGroupList.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        mAlphabetAdapter = AlphabetAdapter(DummyData.getAlphabetList())
-        binding.rvAlphabetList.adapter = mAlphabetAdapter
-        binding.rvAlphabetList.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-
     }
 
     override fun navigateToNewContactScreen() {
@@ -97,9 +97,30 @@ class ContactFragment : Fragment(), ContactView {
         startActivity(context?.let { AddNewGroupActivity.newIntent(it) })
     }
 
-    override fun navigateToChatDetailScreen() {
+    override fun navigateToChatDetailScreen(userId: String) {
         startActivity(context?.let { ChatDetailActivity.newIntent(it) })
     }
+
+    private fun getAlphabetList(nameList:List<String>) : List<Char> {
+        val nameMapList = nameList.groupBy { it[0] }
+        val alphabetList = arrayListOf<Char>()
+        for(key in nameMapList.keys) {
+            alphabetList.add(key)
+        }
+        return alphabetList.sorted()
+    }
+
+    override fun showContacts(contactList: List<UserVO>) {
+        val nameList = arrayListOf<String>()
+        for (contact in contactList){
+            nameList.add(0, contact.userName)
+
+        }
+        mViewPod.setNewData(getAlphabetList(nameList), contactList, false)
+
+    }
+
+    override fun addUserToGroup(userId: String) {}
 
     override fun showError(error: String) {
         Toast.makeText(requireActivity(),error, Toast.LENGTH_SHORT).show()

@@ -215,9 +215,9 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
                 error?.let {
                     onFailure(it.localizedMessage ?: "Check Internet Connection")
                 } ?: run {
-                    val contactList: MutableList<UserVO> = arrayListOf()
+                    val userList: MutableList<UserVO> = arrayListOf()
                     val result = value?.documents ?: arrayListOf()
-                    for (document in result) {
+                    for (document in result){
                         val data = document.data
                         val id = data?.get("id") as String
                         val name = data["name"] as String
@@ -228,20 +228,11 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
                         val gender = data["gender"] as String
                         val qrCode = data["qr_code"] as String
                         val imageUrl = data["image_url"] as String
-                        val contact = UserVO(
-                            id,
-                            name,
-                            email,
-                            phone,
-                            password,
-                            dateOfBirth,
-                            gender,
-                            qrCode,
-                            imageUrl
-                        )
-                        contactList.add(contact)
+                        val user = UserVO(id, name, email, phone, password, dateOfBirth, gender, qrCode, imageUrl)
+                        userList.add(user)
+                        Log.d("FirebaseStoreB","$userList")
                     }
-                    onSuccess(contactList)
+                    onSuccess(userList)
                 }
             }
     }

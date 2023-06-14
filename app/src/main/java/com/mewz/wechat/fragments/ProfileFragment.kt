@@ -240,7 +240,6 @@ class ProfileFragment : Fragment(), ProfileView {
             }
         }
         mViewPod.setNewData(mMomentList)
-        Log.d("ProfileFragment","$momentList")
     }
 
     override fun getMomentIsBookmarked(id: String, bookmarked: Boolean) {

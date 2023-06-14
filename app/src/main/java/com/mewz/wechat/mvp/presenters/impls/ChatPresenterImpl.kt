@@ -11,7 +11,11 @@ class ChatPresenterImpl: ChatPresenter, AbstractBasePresenter<ChatView>() {
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
     }
 
-    override fun onTapChatItem() {
+    override fun onTapChatItem(userId: String) {
         mView.navigateToChatDetailScreen()
+    }
+
+    override fun onTapCheckbox(userId: String) {
+        
     }
 }

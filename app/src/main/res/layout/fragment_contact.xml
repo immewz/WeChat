@@ -94,24 +94,13 @@
                 android:layout_height="@dimen/margin_100dp"
                 android:layout_marginTop="@dimen/margin_card_medium_2"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <include
                 android:layout_below="@id/rvGroupList"
-                android:id="@+id/rvContactGroupList"
+                android:id="@+id/rvContactGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:layout_marginTop="@dimen/margin_card_medium_2"
-                android:layout_marginBottom="@dimen/margin_medium_2"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/rvGroupList"
-                android:id="@+id/rvAlphabetList"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:layout_marginTop="@dimen/margin_medium_3"
-                android:layout_alignParentEnd="true"
-                android:background="@color/box"/>
+                android:layout_marginTop="@dimen/margin_medium"
+                layout="@layout/view_pod_contact"/>
 
         </RelativeLayout>
 

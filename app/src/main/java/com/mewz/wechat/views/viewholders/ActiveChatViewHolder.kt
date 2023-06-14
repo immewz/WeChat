@@ -14,7 +14,7 @@ class ActiveChatViewHolder(itemView: View, private val delegate: ChatItemViewHol
         binding = ViewHolderActiveChatBinding.bind(itemView)
 
         itemView.setOnClickListener {
-            delegate.onTapChatItem()
+            delegate.onTapChatItem("1")
         }
     }
 }

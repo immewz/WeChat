@@ -29,7 +29,7 @@
                 android:id="@+id/btnAddMoment"
                 android:layout_width="@dimen/margin_36dp"
                 android:layout_height="@dimen/margin_36dp"
-                android:src="@drawable/button_add_friend"
+                android:src="@drawable/add_moment"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"/>
 
