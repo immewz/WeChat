@@ -1,5 +1,6 @@
 package com.mewz.wechat.mvp.views
 
+import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.UserVO
 
 interface ContactView: BaseView {
@@ -9,4 +10,5 @@ interface ContactView: BaseView {
 
     fun showContacts(contactList: List<UserVO>)
     fun addUserToGroup(userId: String)
+    fun getGroupList(groupList: List<GroupVO>)
 }

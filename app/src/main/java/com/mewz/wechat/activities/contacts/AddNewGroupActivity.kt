@@ -53,6 +53,19 @@ class AddNewGroupActivity : BaseActivity(), NewGroupView {
         binding.btnDismiss.setOnClickListener {
             onBackPressed()
         }
+
+        binding.btnCreateGroup.setOnClickListener {
+            val mUserIdList = arrayListOf<String>()
+            val groupName = binding.etGroupName.text.toString()
+            for(member in mMemberList) {
+                mUserIdList.add(member.userId)
+            }
+            mUserIdList.add(mPresenter.getUserId())
+            if(groupName.isNotEmpty()) {
+                mPresenter.onTapCreateButton(System.currentTimeMillis(),groupName,mUserIdList.toList())
+                finish()
+            }
+        }
     }
 
     private fun setUpViewPod() {

@@ -2,10 +2,7 @@ package com.mewz.wechat.mvp.presenters.impls
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
-import com.mewz.wechat.data.models.AuthModel
-import com.mewz.wechat.data.models.AuthModelImpl
-import com.mewz.wechat.data.models.UserModel
-import com.mewz.wechat.data.models.UserModelImpl
+import com.mewz.wechat.data.models.*
 import com.mewz.wechat.mvp.presenters.AbstractBasePresenter
 import com.mewz.wechat.mvp.presenters.NewGroupPresenter
 import com.mewz.wechat.mvp.views.NewGroupView
@@ -14,6 +11,7 @@ class NewGroupPresenterImpl: NewGroupPresenter, AbstractBasePresenter<NewGroupVi
 
     private var mUserModel: UserModel = UserModelImpl
     private var mAuthModel: AuthModel= AuthModelImpl
+    private var mChatModel: ChatModel = ChatModelImpl
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
     }
@@ -42,6 +40,6 @@ class NewGroupPresenterImpl: NewGroupPresenter, AbstractBasePresenter<NewGroupVi
     }
 
     override fun onTapCreateButton(timeStamp: Long, groupName: String, userList: List<String>) {
-
+        mChatModel.addGroup(timeStamp, groupName, userList)
     }
 }

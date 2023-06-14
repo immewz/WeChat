@@ -68,7 +68,7 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvGroup"
+                android:id="@+id/tvGroupCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_medium"
@@ -78,7 +78,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_below="@+id/tvGroup"
+                android:layout_below="@+id/tvGroupCount"
                 android:id="@+id/btnAddGroup"
                 android:layout_width="@dimen/margin_90dp"
                 android:layout_height="@dimen/margin_100dp"
@@ -87,7 +87,7 @@
                 android:layout_marginEnd="@dimen/margin_card_medium"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/tvGroup"
+                android:layout_below="@id/tvGroupCount"
                 android:layout_toEndOf="@id/btnAddGroup"
                 android:id="@+id/rvGroupList"
                 android:layout_width="wrap_content"

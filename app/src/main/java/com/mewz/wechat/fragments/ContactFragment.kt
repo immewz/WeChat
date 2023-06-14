@@ -1,5 +1,6 @@
 package com.mewz.wechat.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.mewz.wechat.adapters.AlphabetAdapter
 import com.mewz.wechat.adapters.ContactAdapter
 import com.mewz.wechat.adapters.ContactGroupAdapter
 import com.mewz.wechat.adapters.GroupAdapter
+import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.FragmentContactBinding
 import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
@@ -120,6 +122,18 @@ class ContactFragment : Fragment(), ContactView {
     }
 
     override fun addUserToGroup(userId: String) {}
+    @SuppressLint("SetTextI18n")
+    override fun getGroupList(groupList: List<GroupVO>) {
+        val mGroupList = arrayListOf<GroupVO>()
+        for (group in groupList) {
+            if (mPresenter.getUserId() in group.userIdList) {
+                mGroupList.add(group)
+            }
+        }
+        mAdapter.setNewData(mGroupList)
+        val count  = mGroupList.size.toString()
+        binding.tvGroupCount.text = "Groups($count)"
+    }
 
     override fun showError(error: String) {
         Toast.makeText(requireActivity(),error, Toast.LENGTH_SHORT).show()

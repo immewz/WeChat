@@ -3,10 +3,7 @@ package com.mewz.wechat.mvp.presenters.impls
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
-import com.mewz.wechat.data.models.AuthModel
-import com.mewz.wechat.data.models.AuthModelImpl
-import com.mewz.wechat.data.models.UserModel
-import com.mewz.wechat.data.models.UserModelImpl
+import com.mewz.wechat.data.models.*
 import com.mewz.wechat.mvp.presenters.AbstractBasePresenter
 import com.mewz.wechat.mvp.presenters.ContactPresenter
 import com.mewz.wechat.mvp.views.ContactView
@@ -15,6 +12,7 @@ class ContactPresenterImpl: ContactPresenter, AbstractBasePresenter<ContactView>
 
     private var mAuthModel: AuthModel = AuthModelImpl
     private var mUserModel: UserModel = UserModelImpl
+    private var mChatModel: ChatModel = ChatModelImpl
 
     override fun onUiReady(context: Context, owner: LifecycleOwner) {
     }
@@ -25,6 +23,12 @@ class ContactPresenterImpl: ContactPresenter, AbstractBasePresenter<ContactView>
             onSuccess = { mView.showContacts(it) },
             onFailure = { mView.showError(it) }
         )
+
+        mChatModel.getGroups(
+            onSuccess = { mView.getGroupList(it) },
+            onFailure = { mView.showError(it) }
+        )
+
     }
 
 

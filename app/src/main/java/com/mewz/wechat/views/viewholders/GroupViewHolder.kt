@@ -2,6 +2,7 @@ package com.mewz.wechat.views.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.databinding.ViewHolderGroupBinding
 import com.mewz.wechat.delegtes.GroupItemViewHolderDelegate
 
@@ -13,9 +14,16 @@ class GroupViewHolder(itemView: View, private val delegate: GroupItemViewHolderD
     init {
         binding = ViewHolderGroupBinding.bind(itemView)
 
+    }
+
+    fun bindData(group: GroupVO) {
+
+        binding.tvGroupName.text = group.name
+
         itemView.setOnClickListener {
-            delegate.onTapGroupItem("1")
+            delegate.onTapGroupItem(group.id.toString())
         }
+
     }
 
 

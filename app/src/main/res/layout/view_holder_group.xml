@@ -27,7 +27,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_medium"
+        android:id="@+id/tvGroupName"
         android:text="New group"
         android:textSize="@dimen/text_smaller"
         android:textColor="@color/black"
