@@ -10,7 +10,8 @@ import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.ViewHolderContactGroupBinding
 import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
 
-class ContactGroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ChatItemViewHolderDelegate {
+class ContactGroupViewHolder(itemView: View, private val delegate: ChatItemViewHolderDelegate)
+    : RecyclerView.ViewHolder(itemView), ChatItemViewHolderDelegate {
 
     private var binding: ViewHolderContactGroupBinding
 
@@ -23,7 +24,7 @@ class ContactGroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     }
 
     private fun setUpRecyclerView() {
-        mAdapter = ContactAdapter(this)
+        mAdapter = ContactAdapter(delegate)
         binding.rvContactList.adapter = mAdapter
         binding.rvContactList.layoutManager =
             LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
@@ -33,7 +34,7 @@ class ContactGroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
         itemView.context.startActivity(ChatDetailActivity.newIntent(itemView.context))
     }
 
-    override fun onTapCheckbox(userId: String) {}
+    override fun onTapCheckbox(userId: String, isChecked: Boolean) {}
 
     fun bindData(alphabet: Char, contactList: List<UserVO>, isGroup: Boolean) {
 

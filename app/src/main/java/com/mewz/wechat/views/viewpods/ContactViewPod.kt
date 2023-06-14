@@ -8,6 +8,8 @@ import com.mewz.wechat.adapters.AlphabetAdapter
 import com.mewz.wechat.adapters.ContactGroupAdapter
 import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.ViewPodContactBinding
+import com.mewz.wechat.delegtes.AlphabetActionIItemDelegate
+import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
 import com.mewz.wechat.utils.DummyData
 
 class ContactViewPod @JvmOverloads constructor(
@@ -19,25 +21,30 @@ class ContactViewPod @JvmOverloads constructor(
     private lateinit var mAlphaAdapter: AlphabetAdapter
     private lateinit var mContactGroupAdapter: ContactGroupAdapter
 
+    private lateinit var mDelegateChat: ChatItemViewHolderDelegate
+    private lateinit var mDelegateAlphabet: AlphabetActionIItemDelegate
+
     override fun onFinishInflate() {
         super.onFinishInflate()
         binding = ViewPodContactBinding.bind(this)
     }
 
-    fun setUpContactGroupViewPod(){
+    fun setUpContactGroupViewPod(delegateChat: ChatItemViewHolderDelegate, delegateAlphabet: AlphabetActionIItemDelegate){
+        this.mDelegateChat = delegateChat
+        this.mDelegateAlphabet = delegateAlphabet
         setUpAlphaAdapter()
         setUpContactGroupAdapter()
     }
 
     private fun setUpContactGroupAdapter() {
-        mContactGroupAdapter = ContactGroupAdapter()
+        mContactGroupAdapter = ContactGroupAdapter(mDelegateChat)
         binding.rvContactGroupList.adapter = mContactGroupAdapter
         binding.rvContactGroupList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun setUpAlphaAdapter() {
-        mAlphaAdapter = AlphabetAdapter(DummyData.getAlphabetList())
+        mAlphaAdapter = AlphabetAdapter(DummyData.getAlphabetList(), mDelegateAlphabet)
         binding.rvAlphabetList.adapter = mAlphaAdapter
         binding.rvAlphabetList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

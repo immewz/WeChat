@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mewz.wechat.R
 import com.mewz.wechat.data.vos.UserVO
+import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
 import com.mewz.wechat.views.viewholders.ContactGroupViewHolder
 
-class ContactGroupAdapter: RecyclerView.Adapter<ContactGroupViewHolder>() {
+class ContactGroupAdapter(
+  private val delegate: ChatItemViewHolderDelegate
+) : RecyclerView.Adapter<ContactGroupViewHolder>() {
 
     private var mAlphabetList:List<Char> = listOf()
     private var mUserList:List<UserVO> = listOf()
@@ -16,7 +19,7 @@ class ContactGroupAdapter: RecyclerView.Adapter<ContactGroupViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactGroupViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_contact_group, parent, false)
-        return ContactGroupViewHolder(view)
+        return ContactGroupViewHolder(view, delegate)
     }
 
     override fun getItemCount(): Int {

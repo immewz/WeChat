@@ -15,7 +15,7 @@ class ChatPresenterImpl: ChatPresenter, AbstractBasePresenter<ChatView>() {
         mView.navigateToChatDetailScreen()
     }
 
-    override fun onTapCheckbox(userId: String) {
+    override fun onTapCheckbox(userId: String, isChecked: Boolean) {
         
     }
 }

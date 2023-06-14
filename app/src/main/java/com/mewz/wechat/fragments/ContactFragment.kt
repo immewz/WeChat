@@ -77,7 +77,7 @@ class ContactFragment : Fragment(), ContactView {
 
     private fun setUpViewPod() {
         mViewPod = binding.rvContactGroup.root
-        mViewPod.setUpContactGroupViewPod()
+        mViewPod.setUpContactGroupViewPod(mPresenter, mPresenter)
 
         mPresenter.getContacts(mPresenter.getUserId())
     }
@@ -114,7 +114,6 @@ class ContactFragment : Fragment(), ContactView {
         val nameList = arrayListOf<String>()
         for (contact in contactList){
             nameList.add(0, contact.userName)
-
         }
         mViewPod.setNewData(getAlphabetList(nameList), contactList, false)
 

@@ -14,7 +14,7 @@ class GroupViewHolder(itemView: View, private val delegate: GroupItemViewHolderD
         binding = ViewHolderGroupBinding.bind(itemView)
 
         itemView.setOnClickListener {
-            delegate.onTapGroupItem()
+            delegate.onTapGroupItem("1")
         }
     }
 

@@ -230,7 +230,6 @@ object CloudFirestoreFirebaseApiImpl: CloudFirestoreFirebaseApi {
                         val imageUrl = data["image_url"] as String
                         val user = UserVO(id, name, email, phone, password, dateOfBirth, gender, qrCode, imageUrl)
                         userList.add(user)
-                        Log.d("FirebaseStoreB","$userList")
                     }
                     onSuccess(userList)
                 }
