@@ -100,7 +100,7 @@ class ContactFragment : Fragment(), ContactView {
     }
 
     override fun navigateToChatDetailScreen(userId: String) {
-        startActivity(context?.let { ChatDetailActivity.newIntent(it) })
+        startActivity(context?.let { ChatDetailActivity.newIntent(it, userId, "") })
     }
 
     private fun getAlphabetList(nameList:List<String>) : List<Char> {
@@ -133,6 +133,10 @@ class ContactFragment : Fragment(), ContactView {
         mAdapter.setNewData(mGroupList)
         val count  = mGroupList.size.toString()
         binding.tvGroupCount.text = "Groups($count)"
+    }
+
+    override fun navigateToChatDetailScreenFromGroupItem(groupId: String) {
+        startActivity(context?.let { ChatDetailActivity.newIntent(it, "", groupId) })
     }
 
     override fun showError(error: String) {

@@ -83,7 +83,7 @@ class AddNewGroupActivity : BaseActivity(), NewGroupView {
     }
 
     override fun navigateToChatDetailScreen(userId: String) {
-        startActivity(ChatDetailActivity.newIntent(this))
+        startActivity(ChatDetailActivity.newIntent(this, userId, ""))
     }
 
     private fun getAlphabetList(nameList:List<String>) : List<Char> {

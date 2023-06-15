@@ -33,6 +33,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_toEndOf="@id/flChatProfile"
+        android:id="@+id/cvChatMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/message_box"
@@ -57,7 +58,6 @@
                 android:textColor="@color/colorPrimaryText" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_below="@id/tvRecipientMessage"
                 android:id="@+id/tvRecipientMessageTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,17 +71,18 @@
 
     <LinearLayout
         android:layout_toEndOf="@id/flChatProfile"
+        android:id="@+id/llChatImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginVertical="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin_card_medium"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/tvRecipientMessageImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivRecipientMessageImage"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:src="@drawable/smg_image"
             android:textSize="@dimen/text_regular_2x"
             android:textColor="@color/colorPrimaryText" />

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvChatMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
@@ -13,7 +14,6 @@
         android:layout_alignParentEnd="true">
 
         <LinearLayout
-            android:id="@+id/llMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -63,21 +63,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:id="@+id/llChatImage"
         android:layout_marginVertical="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin_card_medium"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_alignParentEnd="true">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/tvRecipientMessageImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivSenderMessageImage"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
             android:src="@drawable/smg_image"
             android:textSize="@dimen/text_regular_2x"
+            android:scaleType="centerCrop"
             android:textColor="@color/colorPrimaryText" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRecipientMessageTimeImage"
+            android:id="@+id/tvSenderMessageTimeImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:30 AM"

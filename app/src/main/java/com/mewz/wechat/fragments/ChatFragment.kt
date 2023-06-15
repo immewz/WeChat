@@ -12,6 +12,10 @@ import com.mewz.wechat.R
 import com.mewz.wechat.activities.chats.ChatDetailActivity
 import com.mewz.wechat.adapters.ActiveChatAdapter
 import com.mewz.wechat.adapters.ChatAdapter
+import com.mewz.wechat.adapters.GroupAdapter
+import com.mewz.wechat.adapters.GroupChatAdapter
+import com.mewz.wechat.data.vos.GroupVO
+import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.FragmentChatBinding
 import com.mewz.wechat.delegtes.ChatItemViewHolderDelegate
 import com.mewz.wechat.mvp.presenters.ChatPresenter
@@ -24,8 +28,11 @@ class ChatFragment : Fragment(), ChatView {
 
     private lateinit var mAdapter: ActiveChatAdapter
     private lateinit var mChatAdapter: ChatAdapter
+    private lateinit var mGroupAdapter: GroupChatAdapter
 
     private lateinit var mPresenter: ChatPresenter
+
+    private var mUserList: List<UserVO> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +50,11 @@ class ChatFragment : Fragment(), ChatView {
 
         setUpPresenter()
         setUpRecyclerView()
+
+        mPresenter.onUiReady(requireActivity(), this)
+
+        mPresenter.getContacts(mPresenter.getUserId())
+        mPresenter.getChatHistoryUserId(mPresenter.getUserId())
     }
 
     private fun setUpPresenter() {
@@ -60,10 +72,59 @@ class ChatFragment : Fragment(), ChatView {
         binding.rvChatList.adapter = mChatAdapter
         binding.rvChatList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        mGroupAdapter = GroupChatAdapter(mPresenter)
+        binding.rvGroupList.adapter = mGroupAdapter
+        binding.rvGroupList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-    override fun navigateToChatDetailScreen() {
-        startActivity(context?.let { ChatDetailActivity.newIntent(it) })
+    override fun navigateToChatDetailScreen(userId: String) {
+        startActivity(context?.let { ChatDetailActivity.newIntent(it, userId, "") })
+    }
+
+    override fun showContacts(contactList: List<UserVO>) {
+        mAdapter.setNewData(contactList)
+    }
+
+    override fun showUserId(userIdList: List<String>) {
+        val chatUserList = arrayListOf<UserVO>()
+        for(userId in userIdList) {
+            for(user in mUserList) {
+                if(userId == user.userId) {
+                    chatUserList.add(user)
+                    break
+                }
+            }
+        }
+        mChatAdapter.setNewData(chatUserList)
+    }
+
+    override fun getUsers(userList: List<UserVO>) {
+        mUserList = userList
+    }
+
+    override fun getGroups(groupList: List<GroupVO>) {
+        for(group in groupList) {
+
+            for(userId in group.userIdList) {
+                if(mPresenter.getUserId() == userId) {
+                    mPresenter.getGroupMessages(
+                        groupId = group.id,
+                        onSuccess = {
+                            if(it > 0) {
+                                mGroupAdapter.setNewData(group)
+                            }
+                        }
+                    )
+                    break
+                }
+            }
+        }
+    }
+
+    override fun navigateToGroupChatDetailScreen(groupId: Long) {
+        startActivity(context?.let { ChatDetailActivity.newIntent(it, "", groupId.toString()) })
     }
 
     override fun showError(error: String) {

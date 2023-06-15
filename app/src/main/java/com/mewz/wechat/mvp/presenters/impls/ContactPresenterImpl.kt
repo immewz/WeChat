@@ -38,8 +38,8 @@ class ContactPresenterImpl: ContactPresenter, AbstractBasePresenter<ContactView>
         mView.navigateToChatDetailScreen(userId)
     }
 
-    override fun onTapGroupItem(groupId: String) {
-        mView.navigateToChatDetailScreen(groupId)
+    override fun onTapGroupItem(groupId: Long) {
+        mView.navigateToChatDetailScreenFromGroupItem(groupId.toString())
     }
 
     override fun onTapCheckbox(userId: String, isChecked: Boolean) {}

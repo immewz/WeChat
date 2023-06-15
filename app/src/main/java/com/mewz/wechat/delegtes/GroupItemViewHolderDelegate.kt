@@ -1,5 +1,5 @@
 package com.mewz.wechat.delegtes
 
 interface GroupItemViewHolderDelegate {
-    fun onTapGroupItem(groupId: String)
+    fun onTapGroupItem(groupId: Long)
 }
