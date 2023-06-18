@@ -1,10 +1,8 @@
 package com.mewz.wechat.data.models
 
 import android.graphics.Bitmap
-import android.util.Log
 import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.MessageVO
-import com.mewz.wechat.data.vos.PrivateMessageVO
 import com.mewz.wechat.network.storage.RealtimeDatabaseFirebaseApiImpl
 import com.mewz.wechat.network.storage.RealtimeFirebaseApi
 
@@ -20,7 +18,7 @@ object ChatModelImpl: ChatModel {
         senderId: String,
         receiverId: String,
         timeStamp: Long,
-        message: PrivateMessageVO
+        message: MessageVO
     ) {
         mFirebaseApi.sendMessage(senderId, receiverId, timeStamp, message)
     }
@@ -28,7 +26,7 @@ object ChatModelImpl: ChatModel {
     override fun getMessages(
         senderId: String,
         receiverId: String,
-        onSuccess: (groceries: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (groceries: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         mFirebaseApi.getMessages(senderId, receiverId, onSuccess, onFailure)
@@ -65,13 +63,13 @@ object ChatModelImpl: ChatModel {
         mFirebaseApi.getGroups(onSuccess,onFailure)
     }
 
-    override fun sendGroupMessage(groupId: Long, timeStamp:Long, message: PrivateMessageVO) {
+    override fun sendGroupMessage(groupId: Long, timeStamp:Long, message: MessageVO) {
         mFirebaseApi.sendGroupMessage(groupId,timeStamp, message)
     }
 
     override fun getGroupMessages(
         groupId: Long,
-        onSuccess: (messageList: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (messageList: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         mFirebaseApi.getGroupMessages(groupId, onSuccess, onFailure)

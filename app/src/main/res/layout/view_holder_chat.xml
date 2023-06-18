@@ -25,7 +25,7 @@
                 android:layout_height="@dimen/margin_60dp"
                 android:scaleType="centerCrop"
                 app:cornerRadius="@dimen/margin_30dp"
-                app:srcCompat="@drawable/mew" />
+                app:srcCompat="@drawable/group" />
 
             <com.mewz.wechat.views.components.RoundedProfileImage
                 android:id="@+id/ivChatActive"

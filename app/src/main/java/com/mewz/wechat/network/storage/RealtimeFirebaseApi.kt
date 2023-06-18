@@ -3,7 +3,6 @@ package com.mewz.wechat.network.storage
 import android.graphics.Bitmap
 import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.MessageVO
-import com.mewz.wechat.data.vos.PrivateMessageVO
 
 interface RealtimeFirebaseApi {
 
@@ -12,11 +11,11 @@ interface RealtimeFirebaseApi {
         onFailure: (String) -> Unit
     )
 
-    fun sendMessage(senderId: String, receiverId: String, timeStamp: Long, message: PrivateMessageVO)
+    fun sendMessage(senderId: String, receiverId: String, timeStamp: Long, message: MessageVO)
     fun getMessages(
         senderId: String,
         receiverId: String,
-        onSuccess: (messageList: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (messageList: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 
@@ -39,11 +38,11 @@ interface RealtimeFirebaseApi {
         onFailure: (String) -> Unit
     )
 
-    fun sendGroupMessage(groupId: Long,timeStamp:Long, message:PrivateMessageVO)
+    fun sendGroupMessage(groupId: Long,timeStamp:Long, message:MessageVO)
 
     fun getGroupMessages(
         groupId:Long,
-        onSuccess: (messageList: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (messageList: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 

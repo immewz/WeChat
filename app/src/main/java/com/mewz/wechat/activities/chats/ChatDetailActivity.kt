@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -14,12 +13,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.mewz.wechat.activities.BaseActivity
-import com.mewz.wechat.activities.MainActivity
 import com.mewz.wechat.adapters.ChatDetailImageAdapter
 import com.mewz.wechat.adapters.MessageAdapter
 import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.MessageVO
-import com.mewz.wechat.data.vos.PrivateMessageVO
 import com.mewz.wechat.data.vos.UserVO
 import com.mewz.wechat.databinding.ActivityChatDetailBinding
 import com.mewz.wechat.mvp.presenters.ChatDetailPresenter
@@ -71,6 +68,9 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
 
         setUpListeners()
 
+        setUpMessageRecyclerView()
+
+
         mPresenter.onUiReady(this, this)
 
         if (mGroupId.isEmpty()) {
@@ -81,15 +81,19 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
 
     }
 
+
     private fun setUpPresenter() {
         mPresenter = getPresenter<ChatDetailPresenterImpl, ChatDetailView>()
     }
 
-    private fun setUpRecyclerView() {
+    private fun setUpMessageRecyclerView() {
         mMessageAdapter = MessageAdapter()
         binding.rvMessage.adapter = mMessageAdapter
         binding.rvMessage.layoutManager =
-            LinearLayoutManager(this@ChatDetailActivity)
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun setUpRecyclerView() {
 
         mImageAdapter = ChatDetailImageAdapter()
         binding.rvImages.adapter = mImageAdapter
@@ -108,7 +112,7 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
             if (message.isNotEmpty() || mImageList.isNotEmpty()) {
 
                 if (mGroupId.isEmpty()) {
-                    sendPrivateChatMessage(message = message)
+                    sendPersonalChatMessage(message = message)
                 } else {
                     sendGroupChatMessage(message = message)
                 }
@@ -123,27 +127,34 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
         }
     }
 
-    private fun sendPrivateChatMessage(message: String) {
-        Log.i("ImageCount",mImageList.size.toString())
+    private fun sendPersonalChatMessage(message: String) {
         if (mImageAdapter.itemCount > 0 && message.isEmpty()) {
             for (image in mImageList) {
                 val timeStamp = System.currentTimeMillis()
-                mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
-                mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
+                mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp,
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
+                mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp,
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
             }
         } else if (message.isNotEmpty() && mImageList.isEmpty()) {
             val timeStamp = System.currentTimeMillis()
-            mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = ""))
-            mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = ""))
+            mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = ""))
+            mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = ""))
         } else {
             val newTimeStamp = System.currentTimeMillis()
-            mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, newTimeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = ""))
-            mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), newTimeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = ""))
+            mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, newTimeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = ""))
+            mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), newTimeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = ""))
 
             for (image in mImageList) {
                 val timeStamp = System.currentTimeMillis()
-                mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
-                mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
+                mPresenter.sendMessage(mPresenter.getUserId(), mReceiverId, timeStamp,
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
+                mPresenter.sendMessage(mReceiverId, mPresenter.getUserId(), timeStamp,
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = ""))
             }
         }
     }
@@ -152,29 +163,32 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
         if (mImageAdapter.itemCount > 0 && message.isEmpty()) {
             for (image in mImageList) {
                 val timeStamp = System.currentTimeMillis()
-                mPresenter.sendGroupMessage(mGroupId.toLong(),timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = mGroupName))
+                mPresenter.sendGroupMessage(mGroupId.toLong(),timeStamp,
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = mGroupName))
             }
         } else if (message.isNotEmpty() && mImageList.isEmpty())  {
             val timeStamp = System.currentTimeMillis()
-            mPresenter.sendGroupMessage(mGroupId.toLong(),timeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = mGroupName))
+            mPresenter.sendGroupMessage(mGroupId.toLong(),timeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = "", message = message, groupName = mGroupName))
         } else {
             val newTimeStamp = System.currentTimeMillis()
-            mPresenter.sendGroupMessage(mGroupId.toLong(),newTimeStamp, PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = mGroupName))
+            mPresenter.sendGroupMessage(mGroupId.toLong(),newTimeStamp,
+                MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = newTimeStamp, file = "", message = message, groupName = mGroupName))
 
             for (image in mImageList) {
                 val timeStamp = System.currentTimeMillis()
                 mPresenter.sendGroupMessage(mGroupId.toLong(),timeStamp,
-                    PrivateMessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = mGroupName))
+                    MessageVO(userId = mPresenter.getUserId(), userName = mUserName, userProfileImage = mUserProfileImage, timeStamp = timeStamp, file = image, message = "", groupName = mGroupName))
             }
         }
     }
 
-    override fun showMessages(messageList: List<PrivateMessageVO>) {
+    override fun showMessages(messageList: List<MessageVO>) {
         mMessageAdapter.setNewData(mPresenter.getUserId(), messageList)
         binding.rvMessage.scrollToPosition(messageList.size - 1)
     }
 
-    override fun showGroupMessages(messageList: List<PrivateMessageVO>) {
+    override fun showGroupMessages(messageList: List<MessageVO>) {
         mMessageAdapter.setNewData(mPresenter.getUserId(), messageList)
         binding.rvMessage.scrollToPosition(messageList.size - 1)
     }
@@ -213,13 +227,10 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
 
             val filePath = data?.data
             if(requestCode == REQUEST_IMAGE_CAPTURE) {
-                Toast.makeText(this, "You take a photo", Toast.LENGTH_SHORT).show()
                 val imageBitmap = data?.extras?.get("data") as Bitmap
                 mPresenter.uploadAndSendImage(imageBitmap)
                 return
             }
-
-            Toast.makeText(this, "You choose a photo", Toast.LENGTH_SHORT).show()
 
             try {
                 filePath?.let { fileUrl ->
@@ -240,7 +251,7 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
         }
     }
 
-    override fun showGallery() {
+    override fun openGallery() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT

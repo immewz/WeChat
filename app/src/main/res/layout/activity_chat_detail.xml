@@ -37,7 +37,7 @@
                     android:layout_height="40dp"
                     android:scaleType="centerCrop"
                     app:cornerRadius="@dimen/margin_medium_3"
-                    app:srcCompat="@drawable/mew" />
+                    app:srcCompat="@drawable/group" />
 
                 <com.mewz.wechat.views.components.RoundedProfileImage
                     android:id="@+id/ivChatDetailActive"
@@ -89,7 +89,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_marginBottom="130dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -107,19 +108,17 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_below="@id/tvMessageDate"
                 android:id="@+id/rvMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:clipToPadding="true"
                 android:layout_marginTop="@dimen/margin_medium_3" />
-
 
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-
-
     <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

@@ -65,7 +65,7 @@
         android:layout_below="@id/tvCaption"
         android:id="@+id/viewPagerImage"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatImageView

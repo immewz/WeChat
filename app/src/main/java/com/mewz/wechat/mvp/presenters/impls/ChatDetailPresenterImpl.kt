@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
 import com.mewz.wechat.data.models.*
 import com.mewz.wechat.data.vos.MessageVO
-import com.mewz.wechat.data.vos.PrivateMessageVO
 import com.mewz.wechat.mvp.presenters.AbstractBasePresenter
 import com.mewz.wechat.mvp.presenters.ChatDetailPresenter
 import com.mewz.wechat.mvp.views.ChatDetailView
@@ -37,7 +36,7 @@ class ChatDetailPresenterImpl: ChatDetailPresenter, AbstractBasePresenter<ChatDe
     }
 
     override fun onTapGetImageButton() {
-        mView.showGallery()
+        mView.openGallery()
     }
 
     override fun getUserId(): String {
@@ -48,7 +47,7 @@ class ChatDetailPresenterImpl: ChatDetailPresenter, AbstractBasePresenter<ChatDe
         senderId: String,
         receiverId: String,
         timeStamp: Long,
-        message: PrivateMessageVO
+        message: MessageVO
     ) {
         mChatModel.sendMessage(senderId, receiverId, timeStamp, message)
     }
@@ -79,7 +78,7 @@ class ChatDetailPresenterImpl: ChatDetailPresenter, AbstractBasePresenter<ChatDe
         )
     }
 
-    override fun sendGroupMessage(groupId: Long, timeStamp: Long, message: PrivateMessageVO) {
+    override fun sendGroupMessage(groupId: Long, timeStamp: Long, message: MessageVO) {
         mChatModel.sendGroupMessage(groupId, timeStamp, message)
     }
 

@@ -3,7 +3,6 @@ package com.mewz.wechat.data.models
 import android.graphics.Bitmap
 import com.mewz.wechat.data.vos.GroupVO
 import com.mewz.wechat.data.vos.MessageVO
-import com.mewz.wechat.data.vos.PrivateMessageVO
 import com.mewz.wechat.network.storage.RealtimeFirebaseApi
 
 interface ChatModel {
@@ -15,12 +14,12 @@ interface ChatModel {
         onFailure: (String) -> Unit
     )
 
-    fun sendMessage(senderId: String, receiverId: String,timeStamp:Long, message: PrivateMessageVO)
+    fun sendMessage(senderId: String, receiverId: String,timeStamp:Long, message: MessageVO)
 
     fun getMessages(
         senderId: String,
         receiverId: String,
-        onSuccess: (groceries: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (groceries: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 
@@ -39,11 +38,11 @@ interface ChatModel {
         onFailure: (String) -> Unit
     )
 
-    fun sendGroupMessage(groupId: Long,timeStamp:Long, message:PrivateMessageVO)
+    fun sendGroupMessage(groupId: Long,timeStamp:Long, message:MessageVO)
 
     fun getGroupMessages(
         groupId:Long,
-        onSuccess: (messageList: List<PrivateMessageVO>) -> Unit,
+        onSuccess: (messageList: List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 

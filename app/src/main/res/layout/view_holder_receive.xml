@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <FrameLayout
+        android:id="@+id/flChatProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <com.mewz.wechat.views.components.RoundedProfileImage
+            android:id="@+id/ivChatDetailProfileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            app:cornerRadius="@dimen/margin_medium_3"
+            app:srcCompat="@drawable/mew" />
+
+        <com.mewz.wechat.views.components.RoundedProfileImage
+            android:id="@+id/ivChatDetailActive"
+            android:layout_width="@dimen/margin_card_medium_2"
+            android:layout_height="@dimen/margin_card_medium_2"
+            android:scaleType="centerCrop"
+            app:cornerRadius="@dimen/margin_card_medium"
+            android:src="@color/colorAccent"
+            android:layout_gravity="end|bottom" />
+
+    </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:layout_toEndOf="@id/flChatProfile"
         android:id="@+id/cvChatMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:background="@color/message_box"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_small"
-        android:visibility="visible"
-        android:layout_alignParentEnd="true">
+        android:visibility="visible">
 
         <LinearLayout
+            android:id="@+id/llMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -21,65 +51,45 @@
             android:layout_marginHorizontal="@dimen/margin_card_medium">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSenderMessage"
+                android:id="@+id/tvRecipientMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="How are you ?"
                 android:textSize="@dimen/text_regular_2x"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimaryText" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRecipientMessageTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="end"
-                android:layout_marginTop="@dimen/margin_small">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvSenderMessageTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:30 AM"
-                    android:textSize="@dimen/text_smaller"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/margin_medium_3"
-                    android:layout_height="@dimen/margin_medium_3"
-                    android:id="@+id/ivSentSign"
-                    android:src="@drawable/sent"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_gravity="end" />
-
-            </LinearLayout>
+                android:text="12:30 AM"
+                android:textSize="@dimen/text_smaller"
+                android:layout_marginTop="@dimen/margin_small" />
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
+        android:layout_toEndOf="@id/flChatProfile"
+        android:id="@+id/llChatImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/llChatImage"
         android:layout_marginVertical="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin_card_medium"
-        android:visibility="visible"
-        android:layout_alignParentEnd="true">
+        android:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivSenderMessageImage"
+            android:id="@+id/ivRecipientMessageImage"
             android:layout_width="250dp"
             android:layout_height="150dp"
             android:src="@drawable/smg_image"
             android:textSize="@dimen/text_regular_2x"
-            android:scaleType="centerCrop"
             android:textColor="@color/colorPrimaryText" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSenderMessageTimeImage"
+            android:id="@+id/tvRecipientMessageTimeImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:30 AM"
